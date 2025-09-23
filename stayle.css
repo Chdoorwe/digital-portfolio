@@ -8,6 +8,8 @@
     text-decoration: none;
     list-style-type: none;
 
+    font-family: "Metamorphous";
+
 }
 
 .M-Toper {
@@ -70,6 +72,7 @@ body {
 }
 
 .About-me {
+    
     margin: 0 0 45px 0;
 }
 
@@ -80,6 +83,7 @@ body {
     justify-content: center;
 }
 .About_meB{
+    
     align-items: center;
     display: flex;
     justify-content: center;
