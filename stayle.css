@@ -1,0 +1,109 @@
+/*#3A4030,  #655f28, #737D8D, #283A48, #20313F*/
+
+* {
+    color: #655f28;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+
+}
+
+.M-Toper {
+    margin: 0 0 45px 0;
+}
+
+.M-Toper ul {
+    color: #655f28;
+    font-size: 2.5em;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.M-Toper ul li {
+
+    margin: 0 15px;
+}
+
+
+body {
+    background-color: #3A4030;
+}
+
+.certs {
+    font-size: 1.5em;
+    margin: 0 0 45px 0;
+}
+
+.certs h2 {
+    font-size: 2.5em;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.M-h1 {
+    font-size: 2.5em;
+    margin: 25px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    ;
+}
+
+.B-Bivel {
+    border: 20px solid transparent;
+    border-image-source: url(resorsis/img/border/blue-bivel.png);
+    border-image-slice: 55 fill;
+}
+
+.B-InBivelS {
+    border: 10px solid transparent;
+    border-image-source: url(resorsis/img/border/blue-inBivel.png);
+    border-image-slice: 55 fill;
+}
+
+.B-InBivelS p {
+    font-size: 1.5em;
+}
+
+.About-me {
+    margin: 0 0 45px 0;
+}
+
+.About-me h2 {
+    font-size: 2.5em;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.About_meB{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.projects{
+    
+    font-size: 1.5em;
+    margin: 0 0 45px 0;
+}
+
+.projects h2{
+    font-size: 2.5em;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+footer{
+    border: 10px solid transparent;
+    border-image-source: url(resorsis/img/border/blue-bivel.png);
+    border-image-slice: 55 fill;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 1.25em;
+}
