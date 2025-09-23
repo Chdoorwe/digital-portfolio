@@ -57,13 +57,13 @@ body {
 
 .B-Bivel {
     border: 20px solid transparent;
-    border-image-source: url(resorsis/img/border/blue-bivel.png);
+    border-image-source: url(../img/border/blue-bivel.png);
     border-image-slice: 55 fill;
 }
 
 .B-InBivelS {
     border: 10px solid transparent;
-    border-image-source: url(resorsis/img/border/blue-inBivel.png);
+    border-image-source: url(../img/border/blue-inBivel.png);
     border-image-slice: 55 fill;
 }
 
@@ -104,7 +104,7 @@ body {
 
 footer{
     border: 10px solid transparent;
-    border-image-source: url(resorsis/img/border/blue-bivel.png);
+    border-image-source: url(..resorsis/img/border/blue-bivel.png);
     border-image-slice: 55 fill;
     align-items: center;
     display: flex;
