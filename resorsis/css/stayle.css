@@ -32,6 +32,8 @@
 
 body {
     background-color: #3A4030;
+    background-image: url('../img/tileable/tilea-img-flowing-wallble1.png');
+    background-repeat: repeat;
 }
 
 .certs {
@@ -57,14 +59,13 @@ body {
 
 .B-Bivel {
     border: 20px solid transparent;
-    border-image-source: url(../img/border/blue-bivel.png);
-    border-image-slice: 55 fill;
+    border-image-source: url(../img/tileable/wendow.png);
+    border-image-slice: 30 fill ;
+    border-image-repeat:repeat; 
 }
 
 .B-InBivelS {
     border: 10px solid transparent;
-    border-image-source: url(../img/border/blue-inBivel.png);
-    border-image-slice: 55 fill;
 }
 
 .B-InBivelS p {
