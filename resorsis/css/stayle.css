@@ -1,7 +1,7 @@
 /*#3A4030,  #655f28, #737D8D, #283A48, #20313F*/
 
 * {
-    color: #655f28;
+    color: #570505;
     font-style: normal;
     margin: 0;
     padding: 0;
@@ -10,6 +10,12 @@
 
     font-family: "Metamorphous";
 
+}
+.butten{
+    border: 20px solid transparent;
+    border-image-source: url(../img/tileable/butten.png);
+    border-image-slice: 13 fill ;
+    border-image-repeat:repeat; 
 }
 
 .M-Toper {
@@ -60,7 +66,7 @@ body {
 .B-Bivel {
     border: 20px solid transparent;
     border-image-source: url(../img/tileable/wendow.png);
-    border-image-slice: 30 fill ;
+    border-image-slice: 13 fill ;
     border-image-repeat:repeat; 
 }
 
