@@ -11,6 +11,15 @@
     font-family: "Metamorphous";
 
 }
+
+.gilded_brick{
+
+    background-color: #3A4030;
+    background-image: url('../img/tileable/geiled_brick.png');
+    background-repeat: repeat;
+
+}
+
 .butten{
     border: 20px solid transparent;
     border-image-source: url(../img/tileable/butten.png);
