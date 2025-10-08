@@ -12,3 +12,8 @@
     font-size: 1.50em;
     padding: 10px;
 }
+
+.LinkB:hover {
+  color: rgb(155, 54, 223);
+  font-size: 3em;
+}
