@@ -22,6 +22,11 @@
   font-size: 1.5em;
 }
 
+.LinkC:hover {
+  color: #3A4030;
+  font-size: 1.15em;
+}
+
 .gilded_brick{
 
     background-color: #3A4030;
@@ -129,11 +134,13 @@ body {
 }
 
 footer{
-    border: 10px solid transparent;
-    border-image-source: url(..resorsis/img/border/blue-bivel.png);
-    border-image-slice: 55 fill;
     align-items: center;
     display: flex;
     justify-content: center;
-    font-size: 1.25em;
+    font-size: 1.50em;
+
+    border: 20px solid transparent;
+    border-image-source: url(../img/tileable/wendow.png);
+    border-image-slice: 13 fill ;
+    border-image-repeat:repeat; 
 }
