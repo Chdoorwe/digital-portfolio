@@ -14,22 +14,31 @@
 
 <body>
 
+    <audio
+      id="audio"
+      src="/resorsis/sound/beep.wav"
+    ></audio>
+
     <head>
         <section class="M-Toper B-Bivel">
             <h1>
                 <span class="M-h1">Chdoorwe Hellsin</span>
             </h1>
             <ul class="B-InBivelS">
-                <li class="butten LinkC"><a href="#About-me">About me</a></li>
-                <li class="butten LinkC"><a href="#certs">Certs</a></li>
-                <li class="butten LinkC"><a href="#projects">Active projects</a></li>
-                <li class="butten"><a href="#goles">Goles</a></li>
+
+                <li id="AboutMeB" class="butten "><a href="#About-me"><span class="LinkC">About me</span></a></li>
+
+                <li id="certsB" class="butten"><a href="#certs"><span class="LinkC">Certs</span></a></li>
+
+                <li id="projectsB" class="butten"><a href="#projects"><span class="LinkC">Active projects</span></a></li>
+
+                <li id="golesB" class="butten"><a href="#goles"><span class="LinkC">Goles</span></a></li>
             </ul>
         </section>
     </head>
     <main>
         <section id="About-me" class="About-me B-Bivel">
-            <h2><a href="about-me.html"> <span class="LinkA">About me</span></a></h2>
+            <h2><a id="AboutmeLB" href="about-me.html"> <span class="LinkA">About me</span></a></h2>
             <section class="B-InBivelS About_meB">
                 <img src="resorsis/icons/Ch-icon.png" width="150px" alt="">
                 <p>My name is Chdoorwe Hellsin (online aleis) im a person who is unhappy with the state of games now day
@@ -44,10 +53,12 @@
             <h2>Certs</h2>
             <p>
             <ul class="B-InBivelS">
-                <li class="Li-c"><a href="https://certifiedprofessional.adobe.com/illustrator" target="_blank">- Adobe
-                        Illustrator (2024)</a></li>
-                <li class="Li-c"><a href="https://certifiedprofessional.adobe.com/photoshop" target="_blank">- Adobe
-                        Photoshop (2023)</a></li>
+                <li id="buttenS" class="Li-c"><a href="https://certifiedprofessional.adobe.com/illustrator" target="_blank"><span class="LinkC">- Adobe
+                        Illustrator (2024) </span></a></li>
+
+                <li id="buttenS" class="Li-c "><a href="https://certifiedprofessional.adobe.com/photoshop" target="_blank"><span class="LinkC">- Adobe
+                        Photoshop (2023)</span></a></li>
+
                 <li class="Li-c">- Recf Engineering Foundations(2024)</li>
                 <li class="Li-c">- Recf Engineering Mechanical(2024)</li>
             </ul>
@@ -79,6 +90,47 @@
         © Copyright 2025
 
     </footer>
+
+
+    <script>
+   
+      const AboutMeB = document.getElementById("AboutMeB");
+      const certsB = document.getElementById("certsB");
+      const projectsB = document.getElementById("projectsB");
+      const projects = document.getElementById("projects");
+      const audio = document.getElementById("audio");
+
+      AboutMeB.addEventListener("mouseover", () => {
+        audio.play();
+    });
+      certsB.addEventListener("mouseover", () => {
+        audio.play();
+    });
+      projectsB.addEventListener("mouseover", () => {
+        audio.play();
+    });
+      projects.addEventListener("mouseover", () => {
+        audio.play();
+    });
+      
+
+      AboutMeB.addEventListener("mouseleave", () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+      certsB.addEventListener("mouseleave", () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+      projectsB.addEventListener("mouseleave", () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+      projects.addEventListener("mouseleave", () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    </script>
 </body>
 
 </html>
