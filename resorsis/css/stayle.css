@@ -17,6 +17,11 @@
   font-size: 3em;
 }
 
+.LinkA:hover {
+  color: #3A4030;
+  font-size: 1.5em;
+}
+
 .gilded_brick{
 
     background-color: #3A4030;
