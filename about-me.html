@@ -15,15 +15,18 @@
 </head>
 
 <body class="gilded_brick">
+    <audio id="audio" src="resorsis/sound/beep.wav"></audio>
+
+
     <header>
         <section class="M-Toper B-Bivel">
-            <h1><a href="index.html"><span class="M-h1 LinkB">About me</span></a></h1>
+            <h1><a href="index.html"><span class="M-h1 LinkB" id="AboutB">About me</span></a></h1>
             <Section>
                 <ul class="B-InBivelS">
-                    <li class="butten-aboutMe butten " ><a href="#Bio">Bio</a></li>
-                    <li class="butten-aboutMe butten" ><a href="#Pride">Pride</a></li>
-                    <li class="butten-aboutMe butten" ><a href="#How/why">How/why</a></li>
-                    <li class="butten-aboutMe butten" ><a href="#Hobbies">Hobbies</a></li>
+                    <li class="butten-aboutMe butten "><a href="#Bio"><span class="LinkC" id="bioNavB"> Bio </span></a></li>
+                    <li class="butten-aboutMe butten"><a href="#Pride"><span class="LinkC" id="prideNavB">Pride</span></a></li>
+                    <li class="butten-aboutMe butten"><a href="#How/why"><span class="LinkC" id="howWhyNavB">How/why </a></li>
+                    <li class="butten-aboutMe butten"><a href="#Hobbies"><span class="LinkC" id="hobbiesNavB">Hobbies</span></a></li>
                 </ul>
             </Section>
         </section>
@@ -37,10 +40,10 @@
                 <img src="resorsis/icons/Ch-icon.png" width="150px" alt="">
                 <p>
                     <br>
-                    Hi! I'm Chdoorwe, an up-and-coming indie game developer 
-                    . I run a small indie studio called Aregone with some 
-                    friends, where we work on creative game ideas and learn 
-                    as we go. I'm also learning webbevelupment to build 
+                    Hi! I'm Chdoorwe, an up-and-coming indie game developer
+                    . I run a small indie studio called Aregone with some
+                    friends, where we work on creative game ideas and learn
+                    as we go. I'm also learning webbevelupment to build
                     cool things online—like this portfolio!
                 </p>
             </section>
@@ -60,15 +63,15 @@
             <section class="B-InBivelS About_meB">
                 <p>
                     <br>
-                    From a young age, I was exposed to video games. 
-                    One of my earliest memories is sitting down with my younger 
-                    brothers and watching our parents play Mortal Kombat when 
-                    I was around seven years old. That experience stuck with 
-                    me, and over time I became more and more fascinated by 
-                    how video games are made. I started watching dev logs and 
-                    learning what goes on behind the scenes. Eventually, 
-                    I tried making a game myself—and from that moment on, I 
-                    found myself just sitting there, creating games. Thats 
+                    From a young age, I was exposed to video games.
+                    One of my earliest memories is sitting down with my younger
+                    brothers and watching our parents play Mortal Kombat when
+                    I was around seven years old. That experience stuck with
+                    me, and over time I became more and more fascinated by
+                    how video games are made. I started watching dev logs and
+                    learning what goes on behind the scenes. Eventually,
+                    I tried making a game myself—and from that moment on, I
+                    found myself just sitting there, creating games. Thats
                     what led me to the decision to become a game developer.
                 </p>
             </section>
@@ -78,12 +81,12 @@
             <h2>Hobbies</h2>
             <section class="B-InBivelS About_meB">
                 <p>
-                    <ul>
-                        <li class="ul-AbM">- Game Devupment</li>
-                        <li class="ul-AbM">- Gunpla (building Gundam model kits)</li class="ul-AbM">
-                        <li class="ul-AbM">- Vedio games</li>
-                        <li class="ul-AbM">- Coding origins for Minecraft</li>
-                    </ul>
+                <ul>
+                    <li class="ul-AbM">- Game Devupment</li>
+                    <li class="ul-AbM">- Gunpla (building Gundam model kits)</li class="ul-AbM">
+                    <li class="ul-AbM">- Vedio games</li>
+                    <li class="ul-AbM">- Coding origins for Minecraft</li>
+                </ul>
                 </p>
             </section>
         </section>
@@ -96,6 +99,34 @@
         © Copyright 2025
 
     </footer>
+    <script>
+
+        const bioBVar = document.getElementById("bioNavB");
+        const prideBVar = document.getElementById("prideNavB");
+        const howWhyBVar = document.getElementById("howWhyNavB");
+        const hobbies = document.getElementById("hobbiesNavB");
+        const AboutVar = document.getElementById("AboutB");
+        const audio = document.getElementById("audio");
+
+        bioBVar.addEventListener("mouseover", () => { audio.play(); });
+        prideBVar.addEventListener("mouseover", () => { audio.play(); });
+        howWhyBVar.addEventListener("mouseover", () => { audio.play(); });
+        hobbies.addEventListener("mouseover", () => { audio.play(); });
+        AboutVar.addEventListener("mouseover", () => { audio.play(); });
+
+
+        bioBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
+
+        prideBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
+
+        howWhyBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
+
+        hobbies.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
+
+        AboutVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
+
+
+    </script>
 
 
 </body>

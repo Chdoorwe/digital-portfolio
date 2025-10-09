@@ -1,0 +1,31 @@
+*{
+    color: #bf4b56;
+}
+
+.LightSq{
+    background-color: #a38799;
+    background-image: url('../img/tileable/LightSq.png');
+    background-repeat: repeat;
+}
+
+.meatalBox {
+    border: 10px solid transparent;
+    border-image-source: url(../img/tileable/Meatelbox.png);
+    border-image-slice: 10 fill ;
+    border-image-repeat:repeat; 
+}
+
+.LinkB:hover {
+  color: #a38799;
+  font-size: 3em;
+}
+
+.LinkA:hover {
+  color: #a38799;
+  font-size: 1.5em;
+}
+
+.LinkC:hover {
+  color: #a38799;
+  font-size: 1.15em;
+}
