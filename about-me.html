@@ -24,7 +24,6 @@
             <Section>
                 <ul class="B-InBivelS">
                     <li class="butten-aboutMe butten "><a href="#Bio"><span class="LinkC" id="bioNavB"> Bio </span></a></li>
-                    <li class="butten-aboutMe butten"><a href="#Pride"><span class="LinkC" id="prideNavB">Pride</span></a></li>
                     <li class="butten-aboutMe butten"><a href="#How/why"><span class="LinkC" id="howWhyNavB">How/why </a></li>
                     <li class="butten-aboutMe butten"><a href="#Hobbies"><span class="LinkC" id="hobbiesNavB">Hobbies</span></a></li>
                 </ul>
@@ -45,15 +44,6 @@
                     friends, where we work on creative game ideas and learn
                     as we go. I'm also learning webbevelupment to build
                     cool things online—like this portfolio!
-                </p>
-            </section>
-        </section>
-
-        <section id="Pride" class="About-me B-Bivel">
-            <h2>Pride</h2>
-            <section class="B-InBivelS About_meB">
-                <p>
-                    Temp
                 </p>
             </section>
         </section>
@@ -102,22 +92,18 @@
     <script>
 
         const bioBVar = document.getElementById("bioNavB");
-        const prideBVar = document.getElementById("prideNavB");
         const howWhyBVar = document.getElementById("howWhyNavB");
         const hobbies = document.getElementById("hobbiesNavB");
         const AboutVar = document.getElementById("AboutB");
         const audio = document.getElementById("audio");
 
         bioBVar.addEventListener("mouseover", () => { audio.play(); });
-        prideBVar.addEventListener("mouseover", () => { audio.play(); });
         howWhyBVar.addEventListener("mouseover", () => { audio.play(); });
         hobbies.addEventListener("mouseover", () => { audio.play(); });
         AboutVar.addEventListener("mouseover", () => { audio.play(); });
 
 
         bioBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-
-        prideBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
 
         howWhyBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
 
