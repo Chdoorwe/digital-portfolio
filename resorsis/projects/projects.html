@@ -27,31 +27,6 @@
                 </span>
             </a>
         </h1>
-        <ul class="B-InBivelS">
-
-            <li class="butten_P ">
-                <a href="#ITTW">
-                    <span class="LinkC" id="ITTW">
-                        In to The <br>
-                        Woods
-                    </span>
-                </a>
-            </li>
-            <li class="butten_P ">
-                <a href="#TCITW">
-                    <span class="LinkC" id="TCITW">
-                        The Caben In <br>
-                        The Woods
-                    </span>
-                </a>
-            </li>
-            <li class="butten_P ">
-                <a href="#homunculus">
-                    <span class="LinkC" id="homunculus">
-                        homunculus
-                    </span>
-                </a>
-            </li>
 
 
         </ul>
@@ -62,17 +37,10 @@
 </main>
 
 <script>
-    //Tabs
     const ProjectsBVar = document.getElementById("Projects");
-    const ITTWBVar = document.getElementById("ITTW");
-    const TCITWBVar = document.getElementById("TCITW");
-    const homunculusBVar = document.getElementById("homunculus");
     const audio = document.getElementById("audio");
 
     ProjectsBVar.addEventListener("mouseover", () => { audio.play(); });
-    ITTWBVar.addEventListener("mouseover", () => { audio.play(); });
-    TCITWBVar.addEventListener("mouseover", () => { audio.play(); });
-    homunculusBVar.addEventListener("mouseover", () => { audio.play(); });
 
     ProjectsBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
     ITTWBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
