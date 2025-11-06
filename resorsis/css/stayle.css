@@ -1,7 +1,7 @@
 /*#3A4030,  #655f28, #737D8D, #283A48, #20313F*/
 
 * {
-    color: #38273b;
+    color: #f5fff7;
     font-style: normal;
     margin: 0;
     padding: 0;
@@ -12,19 +12,22 @@
 
 }
 
+
 .LinkB:hover {
-  color: #ebccdc;
+  color: #aefafa;
   font-size: 3em;
 }
 
 .LinkA:hover {
-  color: #ebccdc;
+  color: #aefafa;
   font-size: 1.5em;
+  
 }
 
 .LinkC:hover {
-  color: #765776;
+  color: #aefafa;
   font-size: 1.25em;
+  
 }
 
 .gilded_brick{
@@ -62,7 +65,7 @@
 
 body {
     background-color: #3A4030;
-    background-image: url('../img/tileable/tile_brick_wall.png');
+    background-image: url('../img/tileable/tile_brick_wall.gif');
     background-repeat: repeat;
 }
 
@@ -89,7 +92,7 @@ body {
 
 .B-Bivel {
     border: 20px solid transparent;
-    border-image-source: url(../img/tileable/wendow.png);
+    border-image-source: url(../img/tileable/weendow.gif);
     border-image-slice: 13 fill ;
     border-image-repeat:repeat; 
 }
@@ -140,7 +143,7 @@ footer{
     font-size: 1.50em;
 
     border: 20px solid transparent;
-    border-image-source: url(../img/tileable/wendow.png);
+    border-image-source: url(../img/tileable/weendow.gif);
     border-image-slice: 13 fill ;
     border-image-repeat:repeat; 
 }
