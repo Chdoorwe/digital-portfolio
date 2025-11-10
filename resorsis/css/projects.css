@@ -37,3 +37,7 @@
   border-image-repeat: repeat;
   font-size: 0.75em;
 }
+
+footer  :hover {
+  cursor:auto
+}
