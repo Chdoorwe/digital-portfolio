@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="puzel">
   <div class="console" id="console"></div>
   <div class="input-line">
     <span class="prompt">></span>
@@ -45,6 +45,16 @@
         }
         else if (typedValue === 'run:/fuc-puzel.hunt') {
           output.textContent = "Starting puzel hunt protocal";
+          output.classList.add('success');
+          //sleep(1000);
+        }
+        else if (typedValue === 'list') {
+          output.textContent = "Starting puzel hunt protocal";
+          output.classList.add('success');
+          //sleep(1000);
+        }
+        else if (typedValue === 'run:/fuc-code') {
+          output.textContent = "VGhlV29vZHNTcGVlaw==";
           output.classList.add('success');
           //sleep(1000);
         }
@@ -304,10 +314,18 @@
         else if (typedValue === 'error') {
           output.textContent = "Oh no! Something went wrong.";
           output.classList.add('error');
-        } else if (typedValue === '') {
-          output.textContent = "";
-        } else {
+        }
+         else if (typedValue === ' ') {
+          output.textContent = "why";
+        }else if (typedValue === '  ') {
+          output.textContent = "why just";
+        }else if (typedValue === '   ') {
+          output.textContent = "why just why";
+        } else if (typedValue === '    ') {
+          output.textContent = "STOP";
+        }else {
           output.textContent = "Unknown command: " + typedValue;
+          output.classList.add('error');
         }
 
         consoleArea.appendChild(output);
