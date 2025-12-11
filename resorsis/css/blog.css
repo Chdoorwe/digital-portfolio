@@ -32,8 +32,12 @@ body::after {
 .typing {
   overflow: hidden;
   border-right: .15em solid #00FF00;
-  white-space: nowrap;
   animation: typing 4s steps(40, end), blink .75s step-end infinite;
+}
+
+.typing.done {
+  white-space: normal; /* allow wrapping */
+  border-right: none;  /* remove cursor if you want */
 }
 
 .crt-effect {
@@ -55,3 +59,5 @@ body::after {
   );
   pointer-events: none;
 }
+
+
