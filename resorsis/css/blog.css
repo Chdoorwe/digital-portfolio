@@ -1,7 +1,7 @@
 body {
   background-color: #000;
   color: #00FF00;
-  font-family: 'Courier New', monospace;
+   font-family: system-ui;
   text-shadow: 0 0 5px #00FF00;
 }
 

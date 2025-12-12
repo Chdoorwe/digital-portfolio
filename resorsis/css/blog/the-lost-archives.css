@@ -2,6 +2,15 @@
     font-size: 1.25em;
 }
 
+.doc_ware{
+font-size: 1.02em;
+}
+
 .doc{
-font-size: 1.05em;
+    padding: 15px;
+}
+
+.Doc_personal{
+    font-weight: bold;
+    font-size: 1.25em;
 }
