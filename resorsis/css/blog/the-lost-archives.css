@@ -1,0 +1,22 @@
+.date {
+    font-size: 1.25em;
+}
+
+.doc_ware {
+    font-size: 1.02em;
+}
+
+.doc {
+    padding: 15px;
+}
+
+.Doc_personal {
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.Doc-Contaer {
+    max-width: 1200px;
+    justify-content: center;
+    align-items: center;
+}
