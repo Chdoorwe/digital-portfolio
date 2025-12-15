@@ -1,0 +1,64 @@
+body {
+    background-color: #000;
+    color: #00FF00;
+     font-family: system-ui;
+    text-shadow: 0 0 5px #00FF00;
+  }
+  
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 0, 0.05) 0px,
+      rgba(0, 255, 0, 0.05) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    pointer-events: none;
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  @keyframes blink {
+    50% { border-color: transparent }
+  }
+  
+  .typing {
+    overflow: hidden;
+    border-right: .15em solid #00FF00;
+    animation: typing 4s steps(40, end), blink .75s step-end infinite;
+  }
+  
+  .typing.done {
+    white-space: normal; /* allow wrapping */
+    border-right: none;  /* remove cursor if you want */
+  }
+  
+  .crt-effect {
+    filter: contrast(150%) saturate(120%) hue-rotate(90deg);
+    image-rendering: pixelated; /* blocky pixels */
+  }
+  
+  .crt-overlay::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,255,0,0.05) 0px,
+      rgba(0,255,0,0.05) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    pointer-events: none;
+  }
+  
+  
+  
