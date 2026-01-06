@@ -314,20 +314,6 @@ magicBoxInput.addEventListener('keydown', function (event) {
     } else if (typedValue === '') {
       output.textContent = "";
     }
-else if (typedValue === 'enigma') {
-
-    if (typeof getCurrentSettings === "function") {
-
-        const settings = getCurrentSettings(); // call your global function
-
-        output.textContent = settings.plaintext; // show ONLY plaintext
-        output.classList.add('success');
-
-    } else {
-        output.textContent = "Enigma system not loaded.";
-        output.classList.add('error');
-    }
-}
 
 
 
