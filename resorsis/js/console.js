@@ -1,6 +1,8 @@
-
 const magicBoxInput = document.getElementById('magicBox');
 const consoleArea = document.getElementById('console');
+
+// Load permanent state
+let puzzleHuntRan = localStorage.getItem("puzelHuntRan") === "true";
 
 magicBoxInput.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
@@ -8,73 +10,110 @@ magicBoxInput.addEventListener('keydown', function (event) {
     let output = document.createElement('div');
     output.classList.add('output-line');
 
+    // Clear input
+    magicBoxInput.value = "";
+
+    // -------------------------
+    // PUZEL HUNT CHECK
+    // -------------------------
+    if (typedValue === 'run:/fuc-puzel.hunt') {
+
+      if (puzzleHuntRan) {
+        output.textContent = "Puzel hunt protocol has already been run.";
+        output.classList.add('error');
+        consoleArea.appendChild(output);
+        return;
+      }
+
+      output.textContent = "Starting puzel hunt protocal";
+      output.classList.add('success');
+
+      // Save permanent state
+      localStorage.setItem("puzelHuntRan", "true");
+      puzzleHuntRan = true;
+
+      consoleArea.appendChild(output);
+      return;
+    }
+
+    // -------------------------
+    // RESET COMMAND (optional)
+    // -------------------------
+    if (typedValue === 'reset:/puzel.hunt') {
+      localStorage.removeItem("puzelHuntRan");
+      puzzleHuntRan = false;
+
+      output.textContent = "Puzzle hunt reset.";
+      output.classList.add('success');
+      consoleArea.appendChild(output);
+      return;
+    }
+
+    // -------------------------
+    // NORMAL COMMANDS
+    // -------------------------
+
     if (typedValue === 'hello') {
       output.textContent = "01001000 01100101 01101100 01101100 01101111 00100000 01110100 01101000 01100101 01110010 01100101 00101100 00100000 01111001 01101111 01110101 00100000 01100110 01101111 01110101 01101110 01100100 00100000 01110100 01101000 01100101 00100000 01100011 01101111 01101110 01110011 01101111 01101100 01100101 00100000 01101100 01100101 01110100 01110011 00100000 01110000 01101100 01100001 01111001 00100000 01100001 00100000 01100111 01100001 01101101 01100101 00100000 01110010 01110101 01101110 00111010 00101111 01100110 01110101 01100011 00101101 01110000 01110101 01111010 01100101 01101100 00101110 01101000 01110101 01101110 01110100";
       output.classList.add('success');
     }
-    else if (typedValue === 'Hello') {
-      output.textContent = "01001000 01100101 01101100 01101100 01101111 00100000 01110100 01101000 01100101 01110010 01100101 00101100 00100000 01111001 01101111 01110101 00100000 01100110 01101111 01110101 01101110 01100100 00100000 01110100 01101000 01100101 00100000 01100011 01101111 01101110 01110011 01101111 01101100 01100101 00100000 01101100 01100101 01110100 01110011 00100000 01110000 01101100 01100001 01111001 00100000 01100001 00100000 01100111 01100001 01101101 01100101 00100000 01110010 01110101 01101110 00111010 00101111 01100110 01110101 01100011 00101101 01110000 01110101 01111010 01100101 01101100 00101110 01101000 01110101 01101110 01110100";
-      output.classList.add('success');
-    }
+
     else if (typedValue === 'help') {
       output.innerHTML = `
-    <pre> 
+      <pre> 
       run:/fuc-go/index.html
       run:/fuc-go/projects.html
-      <pre> `
+      </pre>`;
       output.classList.add('success');
     }
-    else if (typedValue === 'Help') {
-      output.innerHTML = `
-    <pre> 
-      run:/fuc-go/index.html
-      run:/fuc-go/projects.html
-      <pre> `
-      output.classList.add('success');
-    }
+
     else if (typedValue === 'gundam') {
       output.innerHTML = `
-    <pre> 
+      <pre> 
       run:/fuc-unicorn_gundam
       run:/fuc-barbatos_gundam
-      <pre> `
+      </pre>`;
       output.classList.add('success');
     }
-    else if (typedValue === 'run:/fuc-puzel.hunt') {
-      output.textContent = "Starting puzel hunt protocal";
-      output.classList.add('success');
-      //sleep(1000);
-    }
+
     else if (typedValue === 'run:/fuc-go/index.html') {
       output.textContent = "Starting puzel hunt";
       output.classList.add('success');
-      //sleep(1000);
       window.location.href = "../../index.html";
     }
+
     else if (typedValue === 'run:/fuc-go/projects.html') {
       output.textContent = "Starting puzel hunt";
       output.classList.add('success');
-      //sleep(1000);
       window.location.href = "../projects/projects.html";
     }
+
     else if (typedValue === 'who is watching') {
       output.textContent = "49 20 61 6D 20 74 68 65 20 77 68 6F 20 73 65 74 73 20 61 6E 64 20 77 61 74 63 68 65 73 20 73 65 65 69 6E 67 20 68 6F 77 20 66 61 72 20 79 6F 75 20 63 61 6E 20 67 6F 20 69 6E 20 74 68 69 73 20 67 61 6D 65 20 6F 66 20 61 72 65 5B 74 72 61 6E 73 63 72 69 70 74 20 63 75 74 20 6F 66 20 62 65 66 6F 72 65 20 66 69 6E 69 73 68 5D";
       output.classList.add('success');
-      //sleep(1000);
     }
-    else if (typedValue === 'run:/fuc-go/about.html') {
-      output.textContent = "Starting puzel hunt";
-      output.classList.add('success');
-      //sleep(1000);
-      window.location.href = "../../index.html";
-    }
+
     else if (typedValue === 'hello world') {
       output.textContent = "hi";
       output.classList.add('success');
-      //sleep(1000);
     }
+
+    else if (typedValue === 'git') {
+
+      if (localStorage.getItem("puzelHuntRan") === "true")
+      {
+     output.textContent = "Xi axth xc iwt hpnxcvh lpgt iwt dct lwd rdcigdah pcs bpzt hetzh dc lwpi wt sdth";
+      output.classList.add('success');
+      }
+      else
+      {
+        output.textContent = "sorry doc dont know what to do msing Puzzle start up";
+        output.classList.add('error');
+      }
+ 
+    }
+
     else if (typedValue === 'run:/fuc-unicorn_gundam') {
-      // Use <pre> to preserve spacing and line breaks
       output.innerHTML = `
     <pre>
         Unicorn Gundam
@@ -209,8 +248,8 @@ magicBoxInput.addEventListener('keydown', function (event) {
   `;
       output.classList.add('success');
     }
+
     else if (typedValue === 'run:/fuc-barbatos_gundam') {
-      // Use <pre> to preserve spacing and line breaks
       output.innerHTML = `
     <pre>  
         Barbatos Gundam                                                                                                                                                                   
@@ -308,22 +347,12 @@ magicBoxInput.addEventListener('keydown', function (event) {
   `;
       output.classList.add('success');
     }
-    else if (typedValue === 'error') {
-      output.textContent = "Oh no! Something went wrong.";
-      output.classList.add('error');
-    } else if (typedValue === '') {
-      output.textContent = "";
-    }
-
-
-
 
     else {
-      output.textContent = "Unknown command: " + typedValue;
+      output.textContent = "Unknown command";
+      output.classList.add('error');
     }
 
     consoleArea.appendChild(output);
-    consoleArea.scrollTop = consoleArea.scrollHeight; // auto-scroll
-    magicBoxInput.value = ""; // clear input
   }
-})
+});
