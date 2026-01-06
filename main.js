@@ -45,6 +45,7 @@ const ROTORS = {
   II:   { wiring: "AJDKSIRUXBLHWTMCQGZNPYFVOE", notch: "E" },
   III:  { wiring: "BDFHJLCPRTXVZNYEIWGAKMUSQO", notch: "V" }
 };
+
 const REFLECTORS = {
   B: "YRUHQSLDPXNGOKMIEBFZCWVJAT"
 };
@@ -89,33 +90,44 @@ function makeEnigma({ rotorNames, ringSettings, positions, reflectorName, plugPa
 
 // === Puzzle logic ===
 function setupPuzzle() {
+
+  // === Option 2: Only run once per website visit ===
+  if (sessionStorage.getItem("enigmaLoaded") === "yes") {
+    return; // Already generated this session
+  }
+  sessionStorage.setItem("enigmaLoaded", "yes");
+
   // Random rotor order
   const rotorChoices = ["I","II","III"];
   const rotorNames = rotorChoices.sort(() => Math.random() - 0.5);
 
-  // Random starting positions
+  // Random starting positions (A–Z)
   const randomPositions = [
     Math.floor(Math.random() * 26),
     Math.floor(Math.random() * 26),
     Math.floor(Math.random() * 26)
   ];
 
-  // Random plugboard pairs
+  // Random plugboard pairs (0–2)
   function randomPlugPairs() {
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     const pairs = [];
     const used = new Set();
-    const numPairs = Math.floor(Math.random() * 5); // up to 5 random pairs
+    const numPairs = Math.floor(Math.random() * 3);
+
     for (let i = 0; i < numPairs; i++) {
       let a, b;
       do { a = alphabet[Math.floor(Math.random() * 26)]; } while (used.has(a));
       used.add(a);
+
       do { b = alphabet[Math.floor(Math.random() * 26)]; } while (used.has(b));
       used.add(b);
+
       pairs.push(a + b);
     }
     return pairs;
   }
+
   const plugPairs = randomPlugPairs();
 
   // Build secret machine
@@ -127,11 +139,11 @@ function setupPuzzle() {
     plugPairs
   });
 
-  // Convert positions to letters for display
+  // Convert positions to letters
   const posLetters = randomPositions.map(p => String.fromCharCode(A + p)).join("");
   secretEnigma.setPositions(posLetters);
 
-  // Random first part of the message
+  // Random message
   const phrases = [
     "TOP SECRET MISSION",
     "OPERATION NIGHTFALL",
@@ -140,54 +152,35 @@ function setupPuzzle() {
     "MISSION BRIEFING",
     "CLASSIFIED ORDER"
   ];
-  const randomPart = phrases[Math.floor(Math.random() * phrases.length)];
 
-  // Always append the fixed ending
+  const randomPart = phrases[Math.floor(Math.random() * phrases.length)];
   const secretPlain = randomPart + " END TRANSMISSION";
 
-  // Encrypt it
+  // Encrypt
   const secretCipher = secretEnigma.encode(secretPlain);
 
-  // Show ciphertext to the user
-  document.getElementById("cipherChallenge").textContent = secretCipher;
+  // Display ciphertext if element exists
+  const cipherEl = document.getElementById("cipherChallenge");
+  if (cipherEl) cipherEl.textContent = secretCipher;
 
-  // For debugging or hints, log the settings
-  console.log("Rotor order:", rotorNames);
-  console.log("Positions:", posLetters);
-  console.log("Plugboard:", plugPairs);
+  // === GLOBAL FUNCTION: return all settings + plaintext ===
+  window.getCurrentSettings = function() {
+    return {
+      rotorOrder: rotorNames,
+      positions: posLetters,
+      plugboard: plugPairs,
+      reflector: "B",
+      ringSettings: ["A","A","A"],
+      plaintext: secretPlain,
+      ciphertext: secretCipher
+    };
+  };
 
-  // Decode button logic
-  document.getElementById("decodeBtn").addEventListener("click", () => {
-    const rotorNamesUser = [
-      document.getElementById("r1").value,
-      document.getElementById("r2").value,
-      document.getElementById("r3").value
-    ];
-    const positionsLetters = [
-      document.getElementById("pos1").value,
-      document.getElementById("pos2").value,
-      document.getElementById("pos3").value
-    ].join("").toUpperCase();
-    const plugPairsUser = document.getElementById("plug").value
-      .split(",")
-      .map(s => s.trim())
-      .filter(Boolean);
-
-    const enigma = makeEnigma({
-      rotorNames: rotorNamesUser,
-      ringSettings: [0,0,0],
-      positions: positionsLetters.split("").map(c => c.charCodeAt(0) - 65),
-      reflectorName: "B",
-      plugPairs: plugPairsUser
-    });
-    enigma.setPositions(positionsLetters);
-
-    const cipher = document.getElementById("cipherChallenge").textContent;
-    const decoded = enigma.encode(cipher);
-
-    document.getElementById("decodeOutput").textContent = decoded;
-  });
+  // === GLOBAL FUNCTION: EXPORT SETTINGS AS JSON STRING ===
+  window.exportSettings = function() {
+    return JSON.stringify(getCurrentSettings(), null, 2);
+  };
 }
 
-window.onload = setupPuzzle;
-
+// === Load puzzle once per website visit ===
+document.addEventListener("DOMContentLoaded", setupPuzzle);
