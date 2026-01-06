@@ -93,7 +93,7 @@ function setupPuzzle() {
 
   // === Option 2: Only run once per website visit ===
   if (sessionStorage.getItem("enigmaLoaded") === "yes") {
-    return; // Already generated this session
+    return;
   }
   sessionStorage.setItem("enigmaLoaded", "yes");
 
@@ -101,7 +101,7 @@ function setupPuzzle() {
   const rotorChoices = ["I","II","III"];
   const rotorNames = rotorChoices.sort(() => Math.random() - 0.5);
 
-  // Random starting positions (A–Z)
+  // Random starting positions
   const randomPositions = [
     Math.floor(Math.random() * 26),
     Math.floor(Math.random() * 26),
@@ -159,11 +159,13 @@ function setupPuzzle() {
   // Encrypt
   const secretCipher = secretEnigma.encode(secretPlain);
 
-  // Display ciphertext if element exists
+  // === FIXED: Always generate puzzle, only update UI if element exists ===
   const cipherEl = document.getElementById("cipherChallenge");
-  if (cipherEl) cipherEl.textContent = secretCipher;
+  if (cipherEl !== null) {
+    cipherEl.textContent = secretCipher;
+  }
 
-  // === GLOBAL FUNCTION: return all settings + plaintext ===
+  // === GLOBAL FUNCTION: return all settings ===
   window.getCurrentSettings = function() {
     return {
       rotorOrder: rotorNames,
@@ -176,7 +178,7 @@ function setupPuzzle() {
     };
   };
 
-  // === GLOBAL FUNCTION: EXPORT SETTINGS AS JSON STRING ===
+  // === GLOBAL FUNCTION: export settings as JSON ===
   window.exportSettings = function() {
     return JSON.stringify(getCurrentSettings(), null, 2);
   };
