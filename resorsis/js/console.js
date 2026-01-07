@@ -3,6 +3,7 @@ const consoleArea = document.getElementById('console');
 
 // Load permanent state
 let puzzleHuntRan = localStorage.getItem("puzelHuntRan") === "true";
+let puzzleHuntHelp = parseInt(localStorage.getItem("puzzleHuntHelp")) || 0;
 
 magicBoxInput.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
@@ -60,19 +61,18 @@ magicBoxInput.addEventListener('keydown', function (event) {
 
     else if (typedValue === 'help') {
       output.innerHTML = `
-      <pre> 
-      run:/fuc-go/index.html
-      run:/fuc-go/projects.html
-      </pre>`;
+      run:/fuc-go/index.html <br>
+      run:/fuc-go/projects.html  <br>
+      run:/fuc-hint
+      `;
       output.classList.add('success');
     }
 
     else if (typedValue === 'gundam') {
       output.innerHTML = `
-      <pre> 
-      run:/fuc-unicorn_gundam
+      run:/fuc-unicorn_gundam <br>
       run:/fuc-barbatos_gundam
-      </pre>`;
+      `;
       output.classList.add('success');
     }
 
@@ -100,17 +100,33 @@ magicBoxInput.addEventListener('keydown', function (event) {
 
     else if (typedValue === 'git') {
 
-      if (localStorage.getItem("puzelHuntRan") === "true")
-      {
-     output.textContent = "Xi axth xc iwt hpnxcvh lpgt iwt dct lwd rdcigdah pcs bpzt hetzh dc lwpi wt sdth";
-      output.classList.add('success');
+      if (localStorage.getItem("puzelHuntRan") === "true") {
+        output.textContent = "Xi axth xc iwt hpnxcvh lpgt iwt dct lwd rdcigdah pcs  hetzh dc lwpi wt sdth";
+        output.classList.add('success');
       }
-      else
-      {
+      else {
         output.textContent = "sorry doc dont know what to do msing Puzzle start up";
         output.classList.add('error');
       }
- 
+
+    }
+    else if (typedValue === 'run:/fuc-hint') {
+      if (puzzleHuntHelp === 0) 
+      {
+        localStorage.setItem("puzzleHuntHelp", "1");
+        puzzleHuntHelp = 1;
+        
+        output.innerHTML = `
+       git is the next
+        `;
+      }
+      else if (puzzleHuntHelp === 1) 
+      {
+        output.innerHTML = `
+       no more
+        `;
+      }
+
     }
 
     else if (typedValue === 'run:/fuc-unicorn_gundam') {
