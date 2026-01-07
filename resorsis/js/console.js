@@ -63,7 +63,8 @@ magicBoxInput.addEventListener('keydown', function (event) {
       output.innerHTML = `
       run:/fuc-go/index.html <br>
       run:/fuc-go/projects.html  <br>
-      run:/fuc-hint
+      run:/fuc-hint <br>
+      run:/fuc-my-gethub
       `;
       output.classList.add('success');
     }
@@ -108,6 +109,11 @@ magicBoxInput.addEventListener('keydown', function (event) {
         output.textContent = "sorry doc dont know what to do msing Puzzle start up";
         output.classList.add('error');
       }
+
+    }
+    else if (typedValue === 'run:/fuc-my-gethub') {
+        output.innerHTML  = "//github.com/Chdoorwe/digital-portfolio";
+        output.classList.add('success');
 
     }
     else if (typedValue === 'run:/fuc-hint') {
