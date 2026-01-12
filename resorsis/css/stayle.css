@@ -18,6 +18,16 @@
     /* CSS rules to apply when the viewport width is 600px or less */
     .nav-el {
         flex-wrap: wrap;
+        padding: auto;
+    }
+
+    .butten {
+        font-size: 15px;
+        padding: auto;
+        border: 12px solid transparent !important;
+        border-image-source: url(../img/tileable/buttenv2.png) !important;
+        border-image-slice: 13 fill !important;
+        border-image-repeat: repeat !important;
     }
 
     .media-fsS {
