@@ -13,24 +13,46 @@
 }
 
 
+@media screen and (max-width: 900px) {
+
+    /* CSS rules to apply when the viewport width is 600px or less */
+    .nav-el {
+        flex-wrap: wrap;
+    }
+
+    .media-fsS {
+        font-size: 20px;
+    }
+
+    .media-fsM {
+        font-size: 30px;
+    }
+
+    .media-fsL {
+        font-size: 15px;
+    }
+
+
+}
+
 .LinkB:hover {
-  color: #aefafa;
-  font-size: 3em;
+    color: #aefafa;
+    font-size: 1.02em;
 }
 
 .LinkA:hover {
-  color: #aefafa;
-  font-size: 1.5em;
-  
+    color: #aefafa;
+    font-size: 1.02em;
+
 }
 
 .LinkC:hover {
-  color: #aefafa;
-  font-size: 1.25em;
-  
+    color: #aefafa;
+    font-size: 1.02em;
+
 }
 
-.gilded_brick{
+.gilded_brick {
 
     background-color: #3A4030;
     background-image: url('../img/tileable/geiled_brick.png');
@@ -38,11 +60,11 @@
 
 }
 
-.butten{
+.butten {
     border: 20px solid transparent;
     border-image-source: url(../img/tileable/buttenv2.png);
-    border-image-slice: 13 fill ;
-    border-image-repeat:repeat; 
+    border-image-slice: 13 fill;
+    border-image-repeat: repeat;
 }
 
 .M-Toper {
@@ -93,20 +115,18 @@ body {
 .B-Bivel {
     border: 20px solid transparent;
     border-image-source: url(../img/tileable/weendow.gif);
-    border-image-slice: 13 fill ;
-    border-image-repeat:repeat; 
+    border-image-slice: 13 fill;
+    border-image-repeat: repeat;
 }
 
 .B-InBivelS {
     border: 10px solid transparent;
 }
 
-.B-InBivelS p {
-    font-size: 1.5em;
-}
+
 
 .About-me {
-    
+
     margin: 0 0 45px 0;
 }
 
@@ -116,27 +136,28 @@ body {
     display: flex;
     justify-content: center;
 }
-.About_meB{
-    
+
+.About_meB {
+
     align-items: center;
     display: flex;
     justify-content: center;
 }
 
-.projects{
-    
+.projects {
+
     font-size: 1.5em;
     margin: 0 0 45px 0;
 }
 
-.projects h2{
+.projects h2 {
     font-size: 2.5em;
     align-items: center;
     display: flex;
     justify-content: center;
 }
 
-footer{
+footer {
     align-items: center;
     display: flex;
     justify-content: center;
@@ -144,6 +165,6 @@ footer{
 
     border: 20px solid transparent;
     border-image-source: url(../img/tileable/weendow.gif);
-    border-image-slice: 13 fill ;
-    border-image-repeat:repeat; 
+    border-image-slice: 13 fill;
+    border-image-repeat: repeat;
 }
