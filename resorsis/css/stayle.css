@@ -13,7 +13,7 @@
 }
 
 /*media querie*/
-@media only screen and (max-width: 900px) {
+@media only screen and(max-width: 1080px) {
 
     /* CSS rules to apply when the viewport width is 600px or less */
     .nav-el {
@@ -44,7 +44,6 @@
 
 
 }
-
 .LinkB:hover {
     color: #aefafa;
     font-size: 1.02em;
