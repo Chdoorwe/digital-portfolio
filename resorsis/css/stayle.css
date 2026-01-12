@@ -12,8 +12,8 @@
 
 }
 
-
-@media screen and (max-width: 900px) {
+/*media querie*/
+@media only screen and (max-width: 900px) {
 
     /* CSS rules to apply when the viewport width is 600px or less */
     .nav-el {
