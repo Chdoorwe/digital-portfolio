@@ -4,6 +4,7 @@ const consoleArea = document.getElementById('console');
 // Load permanent state
 let puzzleHuntRan = localStorage.getItem("puzelHuntRan") === "true";
 let puzzleHuntHelp = parseInt(localStorage.getItem("puzzleHuntHelp")) || 0;
+let puzzleNumber = parseInt(localStorage.getItem("puzzleNumber")) || 0;
 
 magicBoxInput.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
@@ -64,9 +65,23 @@ magicBoxInput.addEventListener('keydown', function (event) {
       run:/fuc-go/index.html <br>
       run:/fuc-go/projects.html  <br>
       run:/fuc-hint <br>
-      run:/fuc-my-gethub
+      run:/fuc-my-gethub <br>
+      run:/fuc-hint.cipher
       `;
       output.classList.add('success');
+    }
+    else if(typedValue === 'run:/fuc-hint.cipher')
+    {
+      if(puzzleHuntHelp === 2)
+      {
+      output.textContent = "caesar was a grate emperor but randome leters are not the best way to communicate";
+      output.classList.add('success');
+      }
+      else
+      {
+        output.textContent = "no cipher";
+        output.classList.add('success');
+      }
     }
 
     else if (typedValue === 'gundam') {
@@ -102,8 +117,10 @@ magicBoxInput.addEventListener('keydown', function (event) {
     else if (typedValue === 'git') {
 
       if (localStorage.getItem("puzelHuntRan") === "true") {
+        localStorage.setItem("puzzleNumber", "2");
         output.textContent = "Xi axth xc iwt hpnxcvh lpgt iwt dct lwd rdcigdah pcs  hetzh dc lwpi wt sdth";
         output.classList.add('success');
+        
       }
       else {
         output.textContent = "sorry doc dont know what to do msing Puzzle start up";
