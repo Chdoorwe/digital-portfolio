@@ -33,7 +33,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .section-background {
-    background-image: url('../img/background/checkered_background_gray.png');
+    background-image: url('../../resorsis/img/background/checkered_background_gray.png');
     background-repeat: repeat;
 }
 
