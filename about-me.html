@@ -7,25 +7,19 @@
     <title>About Me</title>
 
     <link rel="stylesheet" href="resorsis/css/stayle.css">
-    <link rel="stylesheet" href="resorsis/css/aboutMe.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
 </head>
 
 <body class="gilded_brick">
-    <audio id="audio" src="resorsis/sound/beep.wav"></audio>
 
 
     <header>
-        <section class="M-Toper B-Bivel">
-            <h1><a href="index.html"><span class="M-h1 LinkB" id="AboutB">About me</span></a></h1>
-            <Section>
-                <ul class="B-InBivelS">
-                    <li class="butten-aboutMe butten "><a href="#Bio"><span class="LinkC" id="bioNavB"> Bio </span></a></li>
-                    <li class="butten-aboutMe butten"><a href="#How/why"><span class="LinkC" id="howWhyNavB">How/why </a></li>
-                    <li class="butten-aboutMe butten"><a href="#Hobbies"><span class="LinkC" id="hobbiesNavB">Hobbies</span></a></li>
+        <section class="border section-background">
+            <h1 class="nav-link"><a href="index.html"><span id="AboutB">About me</span></a></h1>
+            <Section class="section">
+                <ul >
+                    <li class="nav-butten"><a href="#Bio"> Bio </a></li>
+                    <li class="nav-butten"><a href="#How/why">How/why </a></li>
+                    <li class="nav-butten"><a href="#Hobbies">Hobbies</a></li>
                 </ul>
             </Section>
         </section>
@@ -33,11 +27,11 @@
     </header>
 
     <main>
-        <section id="Bio" class="About-me B-Bivel">
-            <h2 class="media-fsL">BIO</h2>
-            <section class="B-InBivelS About_meB">
-                <img src="resorsis/icons/Ch-icon.png" width="150px" alt="">
-                <p class="media-fsS">
+        <section id="Bio">
+            <h2>BIO</h2>
+            <section class="border section section-background">
+                <img class="icon" src="./resorsis/img/icon/Ch-icon.png" width="150px" alt="">
+                <p>
                     <br>
                     Hi! I'm Chdoorwe, an up-and-coming indie game developer
                     . I run a small indie studio called Aregone with some
@@ -48,10 +42,10 @@
             </section>
         </section>
 
-        <section id="How/why" class="About-me B-Bivel">
+        <section id="How/why">
             <h2>The why and how i got here</h2>
-            <section class="B-InBivelS About_meB">
-                <p class="media-fsS">
+            <section class="border section section-background">
+                <p>
                     <br>
                     From a young age, I was exposed to video games.
                     One of my earliest memories is sitting down with my younger
@@ -67,17 +61,15 @@
             </section>
         </section>
 
-        <section id="Hobbies" class="About-me B-Bivel">
+        <section id="Hobbies">
             <h2>Hobbies</h2>
-            <section class="B-InBivelS About_meB">
-                <p>
+            <section class="border section section-background">
                 <ul>
-                    <li class="ul-AbM">- Game Devupment</li>
-                    <li class="ul-AbM">- Gunpla (building Gundam model kits)</li class="ul-AbM">
-                    <li class="ul-AbM">- Vedio games</li>
-                    <li class="ul-AbM">- Coding origins for Minecraft</li>
+                    <li>- Game Development</li>
+                    <li>- Gunpla (building Gundam model kits)</li>
+                    <li>- Video games</li>
+                    <li>- Coding origins for Minecraft</li>
                 </ul>
-                </p>
             </section>
         </section>
 
@@ -89,32 +81,6 @@
         © Copyright 2025
 
     </footer>
-    <script>
-
-        const bioBVar = document.getElementById("bioNavB");
-        const howWhyBVar = document.getElementById("howWhyNavB");
-        const hobbies = document.getElementById("hobbiesNavB");
-        const AboutVar = document.getElementById("AboutB");
-        const audio = document.getElementById("audio");
-
-        bioBVar.addEventListener("mouseover", () => { audio.play(); });
-        howWhyBVar.addEventListener("mouseover", () => { audio.play(); });
-        hobbies.addEventListener("mouseover", () => { audio.play(); });
-        AboutVar.addEventListener("mouseover", () => { audio.play(); });
-
-
-        bioBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-
-        howWhyBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-
-        hobbies.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-
-        AboutVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-
-
-    </script>
-
-
 </body>
 
 </html>

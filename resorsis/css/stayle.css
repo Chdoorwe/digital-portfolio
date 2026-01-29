@@ -1,188 +1,117 @@
-/*#3A4030,  #655f28, #737D8D, #283A48, #20313F*/
-
-* {
-    color: #f5fff7;
-    font-style: normal;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style-type: none;
-
-    font-family: "Metamorphous";
-
-}
-
-/*media querie*/
-@media only screen and (min-width:1px) and (max-width: 1080px) {
-
-    /* CSS rules to apply when the viewport width is 600px or less */
-    .nav-el {
-        flex-wrap: wrap;
-        padding: auto;
-    }
-
-    .media {
-       justify-content: center;
-    }
-
-    .butten {
-        font-size: 15px;
-        padding: auto;
-        border: 12px solid transparent !important;
-        border-image-source: url(../img/tileable/buttenv2.png) !important;
-        border-image-slice: 13 fill !important;
-        border-image-repeat: repeat !important;
-    }
-
-    .media-fsS {
-        font-size: 20px;
-    }
-
-    .media-fsM {
-        font-size: 30px;
-    }
-
-    .media-fsL {
-        font-size: 15px;
-    }
-
-    body{
-            background-color: #3A4030;
-    }
-
-
-}
-.LinkB:hover {
-    color: #aefafa;
-    font-size: 1.02em;
-}
-
-.LinkA:hover {
-    color: #aefafa;
-    font-size: 1.02em;
-
-}
-
-.LinkC:hover {
-    color: #aefafa;
-    font-size: 1.02em;
-
-}
-
-
-.gilded_brick {
-
-    background-color: #3A4030;
-    background-image: url('../img/tileable/geiled_brick.png');
-    background-repeat: repeat;
-
-}
-
-.butten {
-    border: 20px solid transparent;
-    border-image-source: url(../img/tileable/buttenv2.png);
-    border-image-slice: 13 fill;
-    border-image-repeat: repeat;
-}
-
-.M-Toper {
-    margin: 0 0 45px 0;
-}
-
-.M-Toper ul {
-    color: #655f28;
-    font-size: 2.5em;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
-.M-Toper ul li {
-
-    margin: 0 15px;
-}
-
-
 body {
-    background-color: #3A4030;
-    background-image: url('../img/tileable/tile_brick_wall.gif');
+    background-color: #121212;
+    color: #e0e0e0;
+
+    font-family: "Audiowide", sans-serif;
+
+    background-image: url('/resorsis/img/background/checkered_background_dark.png');
     background-repeat: repeat;
 }
 
-.certs {
-    font-size: 1.5em;
-    margin: 0 0 45px 0;
+:root {
+    --primary-nav-hover: #0000f8;
+    --primary-link-hover: #ff000d;
+    --padding-size-x: 5px;
+    --padding-size-y: 10px;
+    --text-color: #ffffff;
 }
 
-.certs h2 {
-    font-size: 2.5em;
+/* hedings styling */
+h1,h2,h3,h4,h5,h6 {
+    color: #c3c2ff;
+    text-align: center;
+    font-size: 2em;
+}
+
+/*======================*/
+
+/* web-section styling */
+.section {
+    justify-content: center;
     align-items: center;
     display: flex;
-    justify-content: center;
 }
 
-.M-h1 {
-    font-size: 2.5em;
-    margin: 25px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    ;
+.section-background {
+    background-image: url('/resorsis/img/background/checkered_background_gray.png');
+    background-repeat: repeat;
 }
 
-.B-Bivel {
-    border: 20px solid transparent;
-    border-image-source: url(../img/tileable/weendow.gif);
-    border-image-slice: 13 fill;
-    border-image-repeat: repeat;
+/*======================*/
+
+
+/* Icon Styling */
+.icon {
+    justify-content: left;
 }
 
-.B-InBivelS {
-    border: 10px solid transparent;
+/*======================*/
+
+/* Border Styling */
+.border {
+    border: 5px solid #423f58;
+    padding: var(--padding-size-x);
+}
+
+/*======================*/
+
+/* Navigation Styling */
+.nav-butten {
+    display: inline;
+    margin: 15px;
+    padding: var(--padding-size-y) var(--padding-size-x);
+    border: 5px solid #5b529b;
+    background-color: #3c3474;
+}
+
+.nav-butten a {
+    color: #c3c2ff;
+    text-decoration: none;
+}
+
+.nav-butten a:hover {
+    text-decoration: underline;
+    text-shadow: -1px -1px 0 var(--primary-nav-hover), 1px -1px 0 var(--primary-nav-hover), -1px 1px 0 var(--primary-nav-hover), 1px 1px 0 var(--primary-nav-hover);
+
+}
+
+/*======================*/
+
+/* Link Styling */
+.nav-link a {
+    color: #ffc2c2;
+    text-decoration: none;
+}
+
+.nav-link a:hover {
+    text-decoration: underline;
+    text-shadow: -1px -1px 0 var(--primary-link-hover), 1px -1px 0 var(--primary-link-hover), -1px 1px 0 var(--primary-link-hover), 1px 1px 0 var(--primary-link-hover);
+}
+
+/*======================*/
+
+p {
+    line-height: 1.6;
+    margin: 15px;
+    padding: var(--padding-size-y) var(--padding-size-x);
 }
 
 
+@media only screen and (min-width:1px) and (max-width: 680px) {
+    .nav-butten {
+        justify-content: center;
+        display: inline-block;
+        margin: 10px 0;
+    }
 
-.About-me {
+    :root {
+        --padding-size-x: 1px;
+        --padding-size-y: 2px;
+    }
 
-    margin: 0 0 45px 0;
-}
-
-.About-me h2 {
-    font-size: 2.5em;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
-.About_meB {
-    font-size: 1.5em;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
-.projects {
-
-    font-size: 1.5em;
-    margin: 0 0 45px 0;
-}
-
-.projects h2 {
-    font-size: 2.5em;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
-footer {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    font-size: 1.50em;
-
-    border: 20px solid transparent;
-    border-image-source: url(../img/tileable/weendow.gif);
-    border-image-slice: 13 fill;
-    border-image-repeat: repeat;
+    h1,h2,h3,h4,h5,h6 {
+        color: #c3c2ff;
+        text-align: center;
+        font-size: 1.5em;
+    }
 }

@@ -9,39 +9,39 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-    <audio id="audio" src="resorsis/sound/beep.wav"></audio>
-
     <header>
-        <section class="M-Toper B-Bivel">
-            <h1 class="media-fsL">
-                <span class="M-h1">Chdoorwe Hellsin</span>
+        <section class="border section-background">
+            <h1>
+                Chdoorwe Hellsin
             </h1>
-            <ul class="B-InBivelS nav-el media-fs">
+            <ul class="section">
 
-                <li class="butten "><a href="resorsis/blogs/blog.html"><span class="LinkC" id="AboutNavB">Archives</span></a></li>
+                <li class="nav-butten"><a href="blog.html">Archives</a></li>
 
-                <li class="butten"><a href="#certs"><span class="LinkC" id="CertsNavB">Certs</span></a></li>
+                <li class="nav-butten"><a href="#certs">Certs</a></li>
 
-                <li class="butten"><a href="#projects"><span class="LinkC" id="projNavB">Active projects</span></a></li>
+                <li class="nav-butten"><a href="#projects">Active projects</a></li>
 
-                <li class="butten"><a href="#goles"><span class="LinkC" id="GolesNavB">Goles</span></a></li>
+                <li class="nav-butten"><a href="#goals">Goals</a></li>
             </ul>
         </section>
     </header>
 
 
-   
-    <main class="media">
-        <section id="About-me" class="About-me B-Bivel">
-            <h2><a id="buttenS" href="about-me.html"> <span class="LinkA test" id="AboutB">About me</span></a></h2>
-            <section class="B-InBivelS About_meB">
-                <img src="resorsis/icons/Ch-icon.png" width="150px" alt="me" class="img-ch">
-                <p class="media-fsS">My name is Chdoorwe Hellsin (online aleis) im a person who is unhappy with the state of games now day
+
+    <main>
+        <section id="About-me">
+            <h2 class="nav-link"><a id="buttenS" href="about-me.html"> About me</a></h2>
+            <section class="section border section-background">
+                <img src="resorsis/img/icon/Ch-icon.png" width="150px" alt="me" class="img-ch">
+                <p>My name is Chdoorwe Hellsin (online aleis) im a person who is unhappy with the
+                    state of games now day
                     made by AAA Game Studios. so i make indie games with my friends with the hope to bring joy to people
                 </p>
             </section>
@@ -49,39 +49,39 @@
 
 
 
-        <section id="certs" class="certs B-Bivel">
+        <section id="certs">
             <h2>Certs</h2>
-            <p>
-            <ul class="B-InBivelS media-fsS">
-                <li id="buttenS" class="Li-c"><a href="https://certifiedprofessional.adobe.com/illustrator"
-                        target="_blank"><span class="LinkC" id="Illustrator">- Adobe
-                            Illustrator (2024) </span></a></li>
+            <section class="section border section-background">
+                <ul>
+                    <li class="nav-link"><a href="https://certifiedprofessional.adobe.com/illustrator" target="_blank">-
+                            Adobe Illustrator
+                            (2024) </a></li>
 
-                <li id="buttenS" class="Li-c "><a href="https://certifiedprofessional.adobe.com/photoshop"
-                        target="_blank"><span class="LinkC" id="Photoshop">- Adobe
-                            Photoshop (2023)</span></a></li>
+                    <li class="nav-link"><a href="https://certifiedprofessional.adobe.com/photoshop" target="_blank">-
+                            Adobe
+                            Photoshop
+                            (2023)</a></li>
 
-                <li class="Li-c">- Recf Engineering Foundations(2024)</li>
-                <li class="Li-c">- Recf Engineering Mechanical(2024)</li>
-            </ul>
-            </p>
+                    <li>- Recf Engineering Foundations(2024)</li>
+                    <li>- Recf Engineering Mechanical(2024)</li>
+                </ul>
+            </section>
         </section>
 
-        <section id="projects" class="projects B-Bivel">
-            <h2>Active- <a id="buttenS" href="resorsis/projects/projects.html"> <span
-                        class="LinkA test" id="projectsB">Projects</span></a></h2>
-            <section class="B-InBivelS">
-                <h3 class="media-fsM">In To The Woods</h3>
-                <p class="media-fsS">
-                In to the woods is a roguelite survival game. You enter into the woods and have to survive five five
-                minute days; however every time you enter, the woods will shift and change.
+        <section id="projects">
+            <h2 class="nav-link">Active- <a id="buttenS" href="projects.html"> Projects</a></h2>
+            <section class="section-background border">
+                <h3>In To The Woods</h3>
+                <p>
+                    In to the woods is a roguelite survival game. You enter into the woods and have to survive five five
+                    minute days; however every time you enter, the woods will shift and change.
                 </p>
             </section>
         </section>
 
 
-        <section id="goles" class="projects B-Bivel">
-            <h2 class="media-fsL">Goles</h2>
+        <section id="goals">
+            <h2>Goals</h2>
             <p>
 
             </p>
@@ -93,66 +93,6 @@
         © Copyright 2025
 
     </footer>
-
-
-    <script>
-
-        const AboutBVar = document.getElementById("AboutNavB");
-        const CertsBVar = document.getElementById("CertsNavB");
-        const GolesBVar = document.getElementById("GolesNavB");
-        const projNBVar = document.getElementById("projNavB");
-        const projectsVar = document.getElementById("projectsB");
-        const AboutVar = document.getElementById("AboutB");
-        const Illustrator = document.getElementById("Illustrator");
-        const Photoshop = document.getElementById("Photoshop");
-        const audio = document.getElementById("audio");
-
-        AboutBVar.addEventListener("mouseover", () => { audio.play(); });
-        CertsBVar.addEventListener("mouseover", () => { audio.play(); });
-        GolesBVar.addEventListener("mouseover", () => { audio.play(); });
-        projNBVar.addEventListener("mouseover", () => { audio.play(); });
-        projectsVar.addEventListener("mouseover", () => { audio.play(); });
-        AboutVar.addEventListener("mouseover", () => { audio.play(); });
-        Photoshop.addEventListener("mouseover", () => { audio.play(); });
-        Illustrator.addEventListener("mouseover", () => { audio.play(); });
-        
-        
-        AboutBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-        CertsBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-        GolesBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-        projNBVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-        projectsVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-        projectsVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-        AboutVar.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-        Illustrator.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-        Photoshop.addEventListener("mouseleave", () => { audio.pause(); audio.currentTime = 0; });
-
-let pattern = "its ther";   // <-- change this anytime
-let buffer = "";
-
-document.addEventListener("keydown", (event) => {
-    // Only track real characters
-    if (event.key.length === 1) {
-        buffer += event.key.toLowerCase();
-    }
-
-    // Keep buffer from growing forever
-    if (buffer.length > pattern.length) {
-        buffer = buffer.slice(-pattern.length);
-    }
-
-    // Check for match
-    if (buffer.endsWith(pattern.toLowerCase())) {
-        console.log("Pattern detected:", pattern);
-        // Do something here
-        buffer = ""; // optional reset
-        window.location.href = "puzel_end.html";
-    }
-});
-
-
-        
-    </script>
 </body>
 
 </html>
