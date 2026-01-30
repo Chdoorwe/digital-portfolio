@@ -1,19 +1,21 @@
-body {
-    background-color: #121212;
-    color: #e0e0e0;
-
-    font-family: "Audiowide", sans-serif;
-
-    background-image: url('../img/background/checkered_background_dark.png');
-    background-repeat: repeat;
-}
-
 :root {
     --primary-nav-hover: #0000f8;
     --primary-link-hover: #ff000d;
     --padding-size-x: 5px;
     --padding-size-y: 10px;
     --text-color: #ffffff;
+}
+
+
+
+body {
+    background-color: #121212;
+    color: var(--text-color);
+
+    font-family: "Audiowide", sans-serif;
+
+    background-image: url('../img/background/checkered_background_dark.png');
+    background-repeat: repeat;
 }
 
 /* hedings styling */
@@ -24,6 +26,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 /*======================*/
+
 
 /* web-section styling */
 .section {
@@ -47,6 +50,7 @@ h1,h2,h3,h4,h5,h6 {
 
 /*======================*/
 
+
 /* Border Styling */
 .border {
     border: 5px solid #423f58;
@@ -54,6 +58,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 /*======================*/
+
 
 /* Navigation Styling */
 .nav-butten {
@@ -77,6 +82,7 @@ h1,h2,h3,h4,h5,h6 {
 
 /*======================*/
 
+
 /* Link Styling */
 .nav-link a {
     color: #ffc2c2;
@@ -94,6 +100,19 @@ p {
     line-height: 1.6;
     margin: 15px;
     padding: var(--padding-size-y) var(--padding-size-x);
+}
+
+footer {
+    justify-content: center;
+    text-align: center;
+    font-size: 0.85em;
+    margin: 20px 0;
+}
+
+footer a {
+    color: var(--text-color);
+    text-decoration: none;
+    cursor:text;
 }
 
 
