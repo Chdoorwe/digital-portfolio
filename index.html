@@ -15,6 +15,7 @@
 
 <body>
     <audio id="audio" src="resorsis/sound/beep.wav"></audio>
+    <audio id="rare-audio" src="resorsis/sound/metal_pipe.wav"></audio>
 
     <header>
         <section class="border section-background">
@@ -98,18 +99,32 @@
     <script>
 
         const audio = document.getElementById("audio");
+        const rareAudio = document.getElementById("rare-audio"); // 5% sound
         const hoverItems = document.querySelectorAll(".nav-link, .nav-butten");
+        
 
         hoverItems.forEach(item => {
             item.addEventListener("mouseover", () => {
-                audio.play();
+
+                // 5% chance (0.05)
+                if (Math.random() < 0.05) {
+                    rareAudio.currentTime = 0;
+                    rareAudio.play();
+                } else {
+                    audio.currentTime = 0;
+                    audio.play();
+                }
             });
 
             item.addEventListener("mouseleave", () => {
                 audio.pause();
                 audio.currentTime = 0;
+
+                rareAudio.pause();
+                rareAudio.currentTime = 0;
             });
         });
+
 
 
     </script>
