@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="resorsis/css/stayle.css">
 </head>
 
-<body class="gilded_brick">
+<body>
 
+    <audio id="audio" src="resorsis/sound/beep.wav"></audio>
 
     <header>
         <section class="border section-background">
             <h1 class="nav-link"><a href="index.html"><span id="AboutB">About me</span></a></h1>
             <Section class="section">
-                <ul >
+                <ul>
                     <li class="nav-butten"><a href="#Bio"> Bio </a></li>
                     <li class="nav-butten"><a href="#How/why">How/why </a></li>
                     <li class="nav-butten"><a href="#Hobbies">Hobbies</a></li>
@@ -82,5 +83,24 @@
 
     </footer>
 </body>
+
+<script>
+
+    const audio = document.getElementById("audio");
+    const hoverItems = document.querySelectorAll(".nav-link, .nav-butten");
+
+    hoverItems.forEach(item => {
+        item.addEventListener("mouseover", () => {
+            audio.play();
+        });
+
+        item.addEventListener("mouseleave", () => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+    });
+
+
+</script>
 
 </html>

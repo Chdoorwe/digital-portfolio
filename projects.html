@@ -12,6 +12,7 @@
 
 <body class="">
 
+    <audio id="audio" src="resorsis/sound/beep.wav"></audio>
 
     <header>
         <section class="nav-butten">
@@ -44,6 +45,26 @@
         </span>
     </a> 2025
 </footer>
+
+
+<script>
+
+    const audio = document.getElementById("audio");
+    const hoverItems = document.querySelectorAll(".nav-link, .nav-butten");
+
+    hoverItems.forEach(item => {
+        item.addEventListener("mouseover", () => {
+            audio.play();
+        });
+
+        item.addEventListener("mouseleave", () => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+    });
+
+
+</script>
 
 
 </body>
