@@ -1,0 +1,143 @@
+        body {
+            background: #111;
+            font-family: "Courier New", monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #eee;
+        }
+
+        .pc-frame {
+            background: #c4c4c4;
+            border: 6px solid #888;
+            box-shadow: 0 0 0 4px #444, 0 0 40px #000;
+            width: 720px;
+            max-width: 95vw;
+            padding: 10px;
+        }
+
+        .pc-header {
+            background: linear-gradient(#dcdcdc, #b8b8b8);
+            border: 2px solid #888;
+            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+
+        .pc-header-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pc-led {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #2ecc71;
+            box-shadow: 0 0 6px #2ecc71;
+        }
+
+        .pc-header-buttons {
+            display: flex;
+            gap: 4px;
+        }
+
+        .pc-btn {
+            width: 14px;
+            height: 14px;
+            border-radius: 2px;
+            border: 1px solid #555;
+            background: #e0e0e0;
+        }
+
+        .pc-screen {
+            margin-top: 8px;
+            background: #000;
+            border: 3px solid #555;
+            padding: 10px;
+            height: 360px;
+            overflow-y: auto;
+            color: #33ff66;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .pc-screen::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .pc-screen::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        .pc-screen::-webkit-scrollbar-thumb {
+            background: #444;
+        }
+
+        .line {
+            white-space: pre-wrap;
+        }
+
+        .prompt-line {
+            display: flex;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        .prompt-label {
+            margin-right: 4px;
+        }
+
+        .prompt-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #33ff66;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            background: #33ff66;
+            margin-left: 2px;
+            animation: blink 1s steps(1) infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                background: transparent;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .pc-frame {
+                width: 100%;
+                border-width: 4px;
+            }
+
+            .pc-screen {
+                height: 260px;
+            }
+        }
+
+        .pc-frame.minimized {
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .pc-frame.fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 9999;
+        }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Retro Box PC Console</title>
+    <link rel="stylesheet" href="resorsis/css/console.css">
+</head>
+
+<body>
+    <div class="pc-frame">
+        <div class="pc-header">
+            <div class="pc-header-left">
+                <div class="pc-led"></div>
+                <span>OG-BOX SYSTEM CONSOLE v1.0</span>
+            </div>
+            <div class="pc-header-buttons">
+                <div class="pc-btn" id="btn-min"></div>
+                <div class="pc-btn" id="btn-full"></div>
+                <div class="pc-btn" id="btn-close"></div>
+            </div>
+
+        </div>
+
+        <div class="pc-screen" id="screen">
+            <div class="line">OG-BOX BIOS 1998 (C) RetroWorks</div>
+            <div class="line">Booting system...</div>
+            <div class="line">Type "help" for available commands.</div>
+            <div class="prompt-line">
+                <span class="prompt-label">C:\&gt;</span>
+                <input class="prompt-input" id="console-input" autofocus />
+                <span class="cursor"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="resorsis/js/console/console_code.js"></script>
+
+
+</body>
+
+</html>
