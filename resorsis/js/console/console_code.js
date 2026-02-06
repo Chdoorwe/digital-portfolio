@@ -12,9 +12,20 @@ const TYPE_SPEED = 25;
 const commands = {};
 
 // Helper to register commands
-function addCommand(name, handler) {
-  commands[name.toLowerCase()] = handler;
+function addCommand(name, handler, options = {}) {
+  commands[name.toLowerCase()] = {
+    run: handler,
+    hidden: options.hidden || false
+  };
 }
+//var
+
+
+// Load permanent state
+let puzzleHuntRan = localStorage.getItem("puzelHuntRan") === "true";
+let puzzleHuntHelp = parseInt(localStorage.getItem("puzzleHuntHelp")) || 0;
+let puzzleNumber = parseInt(localStorage.getItem("puzzleNumber")) || 0;
+
 
 // ===============================
 // Typing + Output
@@ -56,8 +67,11 @@ function printLineInstant(text = "") {
 
 addCommand("help", async () => {
   await typeLine("Available commands:");
+
   Object.keys(commands).forEach(cmd => {
-    printLineInstant("  " + cmd);
+    if (!commands[cmd].hidden) {
+      printLineInstant("  " + cmd);
+    }
   });
 });
 
@@ -78,7 +92,6 @@ async function handleCommand(raw) {
   const inputText = raw.trim();
   if (!inputText) return;
 
-  // Echo user input instantly
   printLineInstant("C:\\> " + inputText);
 
   const parts = inputText.split(" ");
@@ -86,7 +99,7 @@ async function handleCommand(raw) {
   const args = parts.slice(1);
 
   if (commands[cmd]) {
-    await commands[cmd](args);
+    await commands[cmd].run(args);
   } else {
     await typeLine(`'${cmd}' is not recognized as an internal command.`);
   }
@@ -100,33 +113,82 @@ input.addEventListener("keydown", (e) => {
 });
 
 // ===============================
-// Window Buttons
+// Puzzle Button System
 // ===============================
 
-const frame = document.querySelector(".pc-frame");
-const btnMin = document.getElementById("btn-min");
-const btnFull = document.getElementById("btn-full");
-const btnClose = document.getElementById("btn-close");
+const btn1 = document.getElementById("btn-1");
+const btn2 = document.getElementById("btn-2");
+const btn3 = document.getElementById("btn-3");
 
-btnMin.addEventListener("click", () => {
-});
+let puzzleInput = [];
 
-btnFull.addEventListener("click", () => {
-});
+const PUZZLE_PATTERN = [1, 3, 2, 3];
 
-btnClose.addEventListener("click", () => {
-});
+
+
+
+// Auto‑type into input
+async function typeIntoInput(text) {
+  input.value = "";
+  for (let i = 0; i < text.length; i++) {
+    input.value += text[i];
+    await new Promise(res => setTimeout(res, TYPE_SPEED));
+  }
+}
+
+// Auto‑run command after typing
+async function autoRunCommand(cmd) {
+  await typeIntoInput(cmd);
+  await new Promise(res => setTimeout(res, 200));
+  handleCommand(cmd);
+}
+
+function puzzleSolved() {
+  autoRunCommand("secret");
+  puzzleInput = [];
+}
+
+function registerPuzzleClick(num) {
+  puzzleInput.push(num);
+
+  if (puzzleInput.length > PUZZLE_PATTERN.length) {
+    puzzleInput = [];
+    return;
+  }
+
+  for (let i = 0; i < puzzleInput.length; i++) {
+    if (puzzleInput[i] !== PUZZLE_PATTERN[i]) {
+      puzzleInput = [];
+      return;
+    }
+  }
+
+  if (puzzleInput.length === PUZZLE_PATTERN.length) {
+    puzzleSolved();
+  }
+}
+
+btn1.addEventListener("click", () => registerPuzzleClick(1));
+btn2.addEventListener("click", () => registerPuzzleClick(2));
+btn3.addEventListener("click", () => registerPuzzleClick(3));
 
 // ===============================
-// Add your custom commands below
+// Custom Commands
 // ===============================
 
-// Example custom command
+// Hidden "hi" command (binary message)
 addCommand("hi", async () => {
-  await typeLine("OG-BOX SYSTEM CONSOLE");
+  await typeLine(
+    "01001000 01100101 01101100 01101100 01101111 00100000 01110100 01101000 01100101 01110010 01100101 00101100 00100000 01111001 01101111 01110101 00100000 01100110 01101111 01110101 01101110 01100100 00100000 01110100 01101000 01100101 00100000 01100011 01101111 01101110 01110011 01101111 01101100 01100101 00100000 01101100 01100101 01110100 01110011 00100000 01110000 01101100 01100001 01111001 00100000 01100001 00100000 01100111 01100001 01101101 01100101 00100000 01110010 01110101 01101110 00111010 00101111 01100110 01110101 01100011 00101101 01110000 01110101 01111010 01100101 01101100 00101110 01101000 01110101 01101110 01110100"
+  );
 }, { hidden: true });
 
-// Example math command
+// Hidden example
+addCommand("secret", async () => {
+  await typeLine("Puzzle unlocked!");
+}, { hidden: true });
+
+// Math example
 addCommand("add", async (args) => {
   const a = Number(args[0]);
   const b = Number(args[1]);
@@ -139,7 +201,7 @@ addCommand("add", async (args) => {
   await typeLine(String(a + b));
 });
 
-// Example fake scan
+// Fake scan
 addCommand("scan", async () => {
   await typeLine("Running system scan...");
   await typeLine("Checking memory...");
@@ -147,6 +209,3 @@ addCommand("scan", async () => {
   await typeLine("Checking I/O ports...");
   await typeLine("Scan complete. No issues found.");
 });
-
-
-

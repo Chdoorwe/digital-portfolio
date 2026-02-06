@@ -47,6 +47,8 @@
             gap: 4px;
         }
 
+
+
         .pc-btn {
             width: 14px;
             height: 14px;
@@ -54,6 +56,45 @@
             border: 1px solid #555;
             background: #e0e0e0;
         }
+
+        #btn-1 {
+            background: red;
+            border-color: #880007;
+        }
+
+        #btn-2 {
+            background: blue;
+            border-color: #140088;
+        }
+
+        #btn-3 {
+            background: green;
+            border-color: #006622;
+        }
+
+        #btn-1:hover{
+            background: rgb(209, 9, 9);
+            border-color: #7e0515;
+        }
+
+        #btn-2:hover {
+            background: rgb(27, 4, 161);
+            border-color: #080253;
+        }
+
+        #btn-3:hover {
+            background: rgb(2, 107, 46);
+            border-color: #015320;
+        }
+
+
+
+        #btn-1,
+        #btn-2,
+        #btn-3 {
+            box-shadow: inset 1px 1px 0 #ffffff55, inset -1px -1px 0 #00000055;
+        }
+
 
         .pc-screen {
             margin-top: 8px;
