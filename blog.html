@@ -12,61 +12,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <style>
-        /* Search Bar */
-        #blogSearch {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: 2px solid #444;
-            border-radius: 6px;
-            background: #1a1a1a;
-            color: #eee;
-        }
-
-        #blogSearch:focus {
-            border-color: #00ff88;
-            box-shadow: 0 0 8px #00ff88;
-        }
-
-        /* Dropdown */
-        #tagDropdown {
-            position: absolute;
-            width: 100%;
-            background: #222;
-            border: 1px solid #444;
-            border-radius: 6px;
-            margin-top: 2px;
-            display: none;
-            max-height: 200px;
-            overflow-y: auto;
-            z-index: 999;
-        }
-
-        .tag-option {
-            padding: 10px;
-            cursor: pointer;
-            color: #eee;
-        }
-
-        .tag-option:hover {
-            background: #00ff88;
-            color: #000;
-        }
-
-        /* Hide posts fully */
-        .blog-post.hidden {
-            display: none !important;
-        }
-    </style>
+    
 </head>
 
 <body>
 
-    <div style="position: relative;">
-        <input type="text" id="blogSearch" placeholder="Search by ID or tag">
-        <div id="tagDropdown"></div>
-    </div>
+<div id="searchWrapper">
+    <div id="tagContainer"></div>
+    <input type="text" id="blogSearch" placeholder="Search by ID or tag">
+    <div id="tagDropdown"></div>
+</div>
+
 
     <!-- Readability Toggle Button -->
     <button id="readability-toggle">Toggle Readability</button>
@@ -137,8 +93,11 @@
     <!-- SEARCH + TAG DROPDOWN -->
 <script>
     const searchInput = document.getElementById("blogSearch");
+    const tagContainer = document.getElementById("tagContainer");
     const dropdown = document.getElementById("tagDropdown");
-    const posts = document.querySelectorAll(".blog-post"); // make sure your <li> uses class="blog-post"
+    const posts = document.querySelectorAll(".blog-post");
+
+    let activeTags = [];
 
     /* ---------------------------
        COLLECT ALL TAGS
@@ -148,6 +107,29 @@
         const tags = post.dataset.tags?.split(",") || [];
         tags.forEach(t => allTags.add(t.trim()));
     });
+
+    /* ---------------------------
+       CREATE TAG BUBBLE
+    ---------------------------- */
+    function addTagBubble(tag) {
+        if (activeTags.includes(tag)) return;
+
+        activeTags.push(tag);
+
+        const bubble = document.createElement("div");
+        bubble.className = "tag-bubble";
+        bubble.innerHTML = `${tag} <span>x</span>`;
+
+        bubble.querySelector("span").onclick = () => {
+            bubble.remove();
+            activeTags = activeTags.filter(t => t !== tag);
+            runSearch();
+        };
+
+        tagContainer.appendChild(bubble);
+        searchInput.value = "";
+        runSearch();
+    }
 
     /* ---------------------------
        UPDATE DROPDOWN
@@ -168,9 +150,8 @@
             div.className = "tag-option";
             div.textContent = tag;
             div.onclick = () => {
-                searchInput.value = tag;
+                addTagBubble(tag);
                 dropdown.style.display = "none";
-                runSearch();
             };
             dropdown.appendChild(div);
         });
@@ -184,11 +165,11 @@
     function hidePost(post) {
         if (post.classList.contains("hidden") || post.classList.contains("hiding")) return;
 
-        post.classList.add("hiding"); // fade + shrink
+        post.classList.add("hiding");
         setTimeout(() => {
-            post.classList.add("hidden"); // fully remove
+            post.classList.add("hidden");
             post.classList.remove("hiding");
-        }, 350); // match CSS transition time
+        }, 350);
     }
 
     /* ---------------------------
@@ -197,14 +178,11 @@
     function showPost(post) {
         if (!post.classList.contains("hidden")) return;
 
-        post.classList.remove("hidden"); // make visible again
-
-        // force reflow so animation triggers
+        post.classList.remove("hidden");
         void post.offsetWidth;
-
-        post.classList.add("hiding"); // start small + transparent
+        post.classList.add("hiding");
         requestAnimationFrame(() => {
-            post.classList.remove("hiding"); // fade in + expand
+            post.classList.remove("hiding");
         });
     }
 
@@ -212,13 +190,16 @@
        MAIN SEARCH FUNCTION
     ---------------------------- */
     function runSearch() {
-        const search = searchInput.value.toLowerCase();
+        const textSearch = searchInput.value.toLowerCase();
 
         posts.forEach(post => {
             const id = (post.id || "").toLowerCase();
             const tags = (post.dataset.tags || "").toLowerCase();
 
-            if (id.includes(search) || tags.includes(search)) {
+            const matchesText = textSearch && (id.includes(textSearch) || tags.includes(textSearch));
+            const matchesTags = activeTags.some(t => tags.includes(t));
+
+            if (matchesText || matchesTags || (!textSearch && activeTags.length === 0)) {
                 showPost(post);
             } else {
                 hidePost(post);
@@ -227,11 +208,18 @@
     }
 
     /* ---------------------------
-       EVENT LISTENERS
+       INPUT EVENTS
     ---------------------------- */
     searchInput.addEventListener("input", () => {
         updateDropdown(searchInput.value);
         runSearch();
+    });
+
+    searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && searchInput.value.trim() !== "") {
+            addTagBubble(searchInput.value.trim());
+            dropdown.style.display = "none";
+        }
     });
 
     searchInput.addEventListener("focus", () => {
@@ -242,6 +230,7 @@
         if (!searchInput.contains(e.target)) dropdown.style.display = "none";
     });
 </script>
+
 
 
 </body>
