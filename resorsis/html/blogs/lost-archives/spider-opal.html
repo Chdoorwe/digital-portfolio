@@ -34,26 +34,26 @@
                     </p>
                 </li>
             </ul>
-            
+
         </section>
 
-            <section>
+        <section>
 
-                <h2 class="LA-date">Date Written/Made: 8/31/3011</h2>
-                <h3 class="LA-doc-type">From Dr. (Redacted)’s Journal</h3>
-                <section class="LA-container">
+            <h2 class="LA-date">Date Written/Made: 8/31/3011</h2>
+            <h3 class="LA-doc-type">From Dr. (Redacted)’s Journal</h3>
+            <section class="LA-container">
                 <p class="LA-p">
                     From the mutable day of monitoring the opal, as time continues, the crystalline structure forming
                     in the corner is starting to resemble a web-like structure with small moving things on it. Closer
                     examination will need to be done. I will send in one of our disposable personnel.
                 </p>
-                </section>
             </section>
+        </section>
 
-            <section>
-                <h2 class="LA-date">Date Written/Made: 8/31/3011</h2>
-                <h3 class="LA-doc-type">From Dr. (Redacted)’s Journal</h3>
-                <section class="LA-container">
+        <section>
+            <h2 class="LA-date">Date Written/Made: 8/31/3011</h2>
+            <h3 class="LA-doc-type">From Dr. (Redacted)’s Journal</h3>
+            <section class="LA-container">
                 <p class="LA-p">
                     A re-evaluation of classification will need to be done due to the web-like crystalline structure
                     consuming the disposable personnel I sent in. After touching the crystalline structure, the small
@@ -63,13 +63,13 @@
                     Opal, and to take a closer look at the crystalline structure that was once disposable personnel
                     (Class ID: UU-19.15-202008-C).
                 </p>
-                </section>
             </section>
+        </section>
 
-            <section>
-                <h2 class="LA-date">Date Written/Made: 9/01/3011</h2>
-                <h3 class="LA-doc-type">From Dr. (Redacted)’s Journal</h3>
-                <section class="LA-container">
+        <section>
+            <h2 class="LA-date">Date Written/Made: 9/01/3011</h2>
+            <h3 class="LA-doc-type">From Dr. (Redacted)’s Journal</h3>
+            <section class="LA-container">
                 <p class="LA-p">
                     The Research Department has come back with some revelations about the Opal Web crystals: if exposed
                     to high temperatures, the structure of the crystals will fall apart. Also, during the past ten days
@@ -78,23 +78,23 @@
                     Spider Opal. I will schedule an appointment with Ms. Clois to get a psyche evaluation to make sure
                     that I am not going mad, and also to see Ms. Clois.
                 </p>
-                </section>
             </section>
+        </section>
 
-            <section>
-                <h2 class="LA-date">Date Written/Made: 9/11/3011</h2>
-                <h3 class="LA-doc-type">Transcript of the Recorded Psyche Evaluation</h3>
-                <section class="LA-transcript-date LA-container">
+        <section>
+            <h2 class="LA-date">Date Written/Made: 9/11/3011</h2>
+            <h3 class="LA-doc-type">Transcript of the Recorded Psyche Evaluation</h3>
+            <section class="LA-transcript-date LA-container">
 
-                    <ul>
-                        <li>Date: 9/11/3011</li>
-                        <li>Time: 10:10 AM</li>
-                        <li>Patient: Dr. (Redacted)</li>
-                        <li>Gender: Female</li>
-                        <li>Age: 40</li>
-                    </ul>
-                </section>
-                <section class="LA-container">
+                <ul>
+                    <li>Date: 9/11/3011</li>
+                    <li>Time: 10:10 AM</li>
+                    <li>Patient: Dr. (Redacted)</li>
+                    <li>Gender: Female</li>
+                    <li>Age: 40</li>
+                </ul>
+            </section>
+            <section class="LA-container">
                 <ul class="LA-transcript">
                     <li> Ms. Clois: “Hello (Redacted), how have you been?” </li>
                     <li> Dr. (Redacted): “Good. How have you been, Ms. Clois?” </li>
@@ -111,13 +111,30 @@
                         during
                         the incident].” </li>
                 </ul>
-                </section>
             </section>
+        </section>
     </main>
 
     <footer>
         © Copyright 2025
     </footer>
+
+
+
+    <script>
+        // Apply saved mode
+        if (localStorage.getItem("readable") === "true") {
+            document.body.classList.add("readable-mode");
+        }
+
+        // Toggle button
+        const toggleBtn = document.getElementById("readability-toggle");
+        toggleBtn.addEventListener("click", () => {
+            document.body.classList.toggle("readable-mode");
+            localStorage.setItem("readable", document.body.classList.contains("readable-mode"));
+        });
+    </script>
+
 </body>
 
 </html>

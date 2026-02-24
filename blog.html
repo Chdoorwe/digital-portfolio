@@ -12,10 +12,65 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
+    <style>
+        /* Search Bar */
+        #blogSearch {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #444;
+            border-radius: 6px;
+            background: #1a1a1a;
+            color: #eee;
+        }
 
+        #blogSearch:focus {
+            border-color: #00ff88;
+            box-shadow: 0 0 8px #00ff88;
+        }
+
+        /* Dropdown */
+        #tagDropdown {
+            position: absolute;
+            width: 100%;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 6px;
+            margin-top: 2px;
+            display: none;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 999;
+        }
+
+        .tag-option {
+            padding: 10px;
+            cursor: pointer;
+            color: #eee;
+        }
+
+        .tag-option:hover {
+            background: #00ff88;
+            color: #000;
+        }
+
+        /* Hide posts fully */
+        .blog-post.hidden {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
+
+    <div style="position: relative;">
+        <input type="text" id="blogSearch" placeholder="Search by ID or tag">
+        <div id="tagDropdown"></div>
+    </div>
+
+    <!-- Readability Toggle Button -->
+    <button id="readability-toggle">Toggle Readability</button>
+
     <header>
         <h1><a href="../../index.html">Archives</a></h1>
     </header>
@@ -24,67 +79,170 @@
         <div id="special">all is not what its seems <a href="/projects.html">here</a> the bass of the tree of
             life "hello"</div>
 
-
-        <section class="Blog-post-container ">
+        <section class="Blog-post-container">
             <ul class="Blog-post-container Blog-post-list">
-                <li class="Blog-post">
+
+                <!-- POST 1 -->
+                <li class="blog-post" id="spider-opal" data-tags="lost_archives">
                     <section>
                         <h2><a href="resorsis/html/blogs/lost-archives/spider-opal.html">Spider Opal</a></h2>
                         <p>At first glance, the Spider Opal is breathtaking a rounded gem laced with delicate, web‑like
-                            veins
-                            that shimmer in the light. But beauty hides terror. The crystalline webs grow, consume, and
-                            transform anything they touch. Those who study it whisper of Opal Spiders crawling within,
-                            and
-                            of
-                            voices that call from the chamber, urging entry… urging surrender.</p>
+                            veins that shimmer in the light. But beauty hides terror. The crystalline webs grow, consume,
+                            and transform anything they touch. Those who study it whisper of Opal Spiders crawling
+                            within, and of voices that call from the chamber, urging entry… urging surrender.</p>
                     </section>
                 </li>
 
-                <li class="Blog-post">
+                <!-- POST 2 -->
+                <li class="blog-post" id="story-one" data-tags="bermuda,">
                     <section>
-                        <h2><a href="">new</a></h2>
-                        <p>
-                            coming soon
+                        <h2><a href="resorsis/html/blogs/bermuda/jhon/story-one.html">Story one <br>The End Of old a
+                                start of new</a></h2>
+                        <p>(bermuda)
+                            summary coming soon
                         </p>
                     </section>
                 </li>
 
-
             </ul>
         </section>
-
-
-
-
-
-
-
-
-
-
     </main>
 
     <footer>
         © Copyright 2025
-
     </footer>
 
     <script>
+        // Show special message sometimes
         window.onload = function () {
-            const chance = 0.25; // 10% chance
+            const chance = 0.25;
             if (Math.random() < chance) {
                 document.getElementById("special").style.display = "block";
             }
         };
-    </script>
-    <style>
-        #special {
-            display: none;
-            padding: 20px;
-            margin: 10px;
-            border: 2px solid black;
+
+        // Apply saved readability mode
+        if (localStorage.getItem("readable") === "true") {
+            document.body.classList.add("readable-mode");
         }
-    </style>
+
+        // Toggle button logic
+        const toggleBtn = document.getElementById("readability-toggle");
+        toggleBtn.addEventListener("click", () => {
+            document.body.classList.toggle("readable-mode");
+            localStorage.setItem("readable", document.body.classList.contains("readable-mode"));
+        });
+    </script>
+
+    <!-- SEARCH + TAG DROPDOWN -->
+<script>
+    const searchInput = document.getElementById("blogSearch");
+    const dropdown = document.getElementById("tagDropdown");
+    const posts = document.querySelectorAll(".blog-post"); // make sure your <li> uses class="blog-post"
+
+    /* ---------------------------
+       COLLECT ALL TAGS
+    ---------------------------- */
+    const allTags = new Set();
+    posts.forEach(post => {
+        const tags = post.dataset.tags?.split(",") || [];
+        tags.forEach(t => allTags.add(t.trim()));
+    });
+
+    /* ---------------------------
+       UPDATE DROPDOWN
+    ---------------------------- */
+    function updateDropdown(filter = "") {
+        dropdown.innerHTML = "";
+        const filtered = [...allTags].filter(tag =>
+            tag.toLowerCase().includes(filter.toLowerCase())
+        );
+
+        if (filtered.length === 0) {
+            dropdown.style.display = "none";
+            return;
+        }
+
+        filtered.forEach(tag => {
+            const div = document.createElement("div");
+            div.className = "tag-option";
+            div.textContent = tag;
+            div.onclick = () => {
+                searchInput.value = tag;
+                dropdown.style.display = "none";
+                runSearch();
+            };
+            dropdown.appendChild(div);
+        });
+
+        dropdown.style.display = "block";
+    }
+
+    /* ---------------------------
+       ANIMATED HIDE
+    ---------------------------- */
+    function hidePost(post) {
+        if (post.classList.contains("hidden") || post.classList.contains("hiding")) return;
+
+        post.classList.add("hiding"); // fade + shrink
+        setTimeout(() => {
+            post.classList.add("hidden"); // fully remove
+            post.classList.remove("hiding");
+        }, 350); // match CSS transition time
+    }
+
+    /* ---------------------------
+       ANIMATED SHOW
+    ---------------------------- */
+    function showPost(post) {
+        if (!post.classList.contains("hidden")) return;
+
+        post.classList.remove("hidden"); // make visible again
+
+        // force reflow so animation triggers
+        void post.offsetWidth;
+
+        post.classList.add("hiding"); // start small + transparent
+        requestAnimationFrame(() => {
+            post.classList.remove("hiding"); // fade in + expand
+        });
+    }
+
+    /* ---------------------------
+       MAIN SEARCH FUNCTION
+    ---------------------------- */
+    function runSearch() {
+        const search = searchInput.value.toLowerCase();
+
+        posts.forEach(post => {
+            const id = (post.id || "").toLowerCase();
+            const tags = (post.dataset.tags || "").toLowerCase();
+
+            if (id.includes(search) || tags.includes(search)) {
+                showPost(post);
+            } else {
+                hidePost(post);
+            }
+        });
+    }
+
+    /* ---------------------------
+       EVENT LISTENERS
+    ---------------------------- */
+    searchInput.addEventListener("input", () => {
+        updateDropdown(searchInput.value);
+        runSearch();
+    });
+
+    searchInput.addEventListener("focus", () => {
+        updateDropdown(searchInput.value);
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!searchInput.contains(e.target)) dropdown.style.display = "none";
+    });
+</script>
+
 
 </body>
 
