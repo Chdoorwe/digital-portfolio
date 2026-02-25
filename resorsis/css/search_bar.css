@@ -1,0 +1,116 @@
+/* ============================================================
+   SEARCH BAR WRAPPER
+   ------------------------------------------------------------
+   This holds:
+   - tag bubbles
+   - the text input
+   - the dropdown
+   All inside one flexible bar.
+============================================================ */
+#searchWrapper {
+    position: relative;
+    width: 100%;
+    min-height: 45px;
+    background: #1a1a1a;
+    border: 2px solid #444;
+    border-radius: 6px;
+    padding: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ============================================================
+   TAG BUBBLES INSIDE THE SEARCH BAR
+   ------------------------------------------------------------
+   These appear when the user selects a tag.
+   They sit inside the search bar like Discord/Gmail chips.
+============================================================ */
+.tag-bubble {
+    background: #00ff88;
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+/* "x" button inside the bubble */
+.tag-bubble span {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ============================================================
+   SEARCH INPUT FIELD
+   ------------------------------------------------------------
+   This stays usable even when bubbles are present.
+============================================================ */
+#blogSearch {
+    flex: 1;
+    min-width: 120px;
+    border: none;
+    background: transparent;
+    color: #eee;
+    font-size: 16px;
+    padding: 6px;
+    outline: none;
+}
+
+/* ============================================================
+   DROPDOWN LIST OF TAG SUGGESTIONS
+   ------------------------------------------------------------
+   Appears under the search bar.
+============================================================ */
+#tagDropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #222;
+    border: 1px solid #444;
+    border-radius: 6px;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 999;
+}
+
+.tag-option {
+    padding: 10px;
+    cursor: pointer;
+    color: #eee;
+}
+
+.tag-option:hover {
+    background: #00ff88;
+    color: #000;
+}
+
+/* ============================================================
+   POST FADE + COLLAPSE ANIMATION
+   ------------------------------------------------------------
+   - .hiding = fade + shrink
+   - .hidden = fully removed from layout
+============================================================ */
+.blog-post {
+    opacity: 1;
+    max-height: 500px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: opacity 0.35s ease, max-height 0.35s ease, transform 0.35s ease;
+}
+
+.blog-post.hiding {
+    opacity: 0;
+    max-height: 0;
+    transform: scale(0.98);
+}
+
+.blog-post.hidden {
+    display: none;
+}

@@ -1,0 +1,24 @@
+/* ============================================================
+   READABILITY / LIGHT MODE
+   ------------------------------------------------------------
+   This class is added to <body> when the user clicks the toggle.
+   It overrides your normal dark CRT theme.
+============================================================ */
+.readable-mode {
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+/* Make sure text inside posts also switches */
+.readable-mode .blog-post,
+.readable-mode p,
+.readable-mode h1,
+.readable-mode h2,
+.readable-mode h3 {
+    color: #000 !important;
+}
+
+/* Optional: make links readable too */
+.readable-mode a {
+    color: #0033cc !important;
+}
