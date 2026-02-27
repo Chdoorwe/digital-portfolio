@@ -5,8 +5,8 @@
    It overrides your normal dark CRT theme.
 ============================================================ */
 .readable-mode {
-    background: #ffffff !important;
-    color: #000000 !important;
+    background: #c0c3d3 !important;
+    color: #064109 !important;
 }
 
 /* Make sure text inside posts also switches */

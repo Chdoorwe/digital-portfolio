@@ -14,16 +14,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    
+
 </head>
 
 <body>
 
-<div id="searchWrapper">
-    <div id="tagContainer"></div>
-    <input type="text" id="blogSearch" placeholder="Search by ID or tag">
-    <div id="tagDropdown"></div>
-</div>
+    <div id="searchWrapper">
+        <div id="tagContainer"></div>
+        <input type="text" id="blogSearch" placeholder="Search by ID or tag">
+        <div id="tagDropdown"></div>
+    </div>
 
 
     <!-- Readability Toggle Button -->
@@ -37,30 +37,44 @@
         <div id="special">all is not what its seems <a href="projects.html">here</a> the bass of the tree of
             life "hello"</div>
 
-        <section class="Blog-post-container">
-            <ul class="Blog-post-container Blog-post-list">
+        <section class="LA-container ">
+            <ul class="Blog-post-list">
 
                 <!-- POST 1 -->
                 <li class="blog-post" id="spider-opal" data-tags="lost_archives">
                     <section>
                         <h2><a href="resorsis/html/blogs/lost-archives/spider-opal.html">Spider Opal</a></h2>
-                        <p>At first glance, the Spider Opal is breathtaking a rounded gem laced with delicate, web‑like
-                            veins that shimmer in the light. But beauty hides terror. The crystalline webs grow, consume,
+                        <p>
+                            (lost archives) <br>
+                            At first glance, the Spider Opal is breathtaking a rounded gem laced with delicate, web‑like
+                            veins that shimmer in the light. But beauty hides terror. The crystalline webs grow,
+                            consume,
                             and transform anything they touch. Those who study it whisper of Opal Spiders crawling
                             within, and of voices that call from the chamber, urging entry… urging surrender.</p>
                     </section>
                 </li>
 
                 <!-- POST 2 -->
-                <li class="blog-post" id="story-one" data-tags="bermuda,">
+                <li class="blog-post" id="story-one" data-tags="bermuda">
                     <section>
-                        <h2><a href="resorsis/html/blogs/bermuda/jhon/story-one.html">Story one <br>The End Of old a
-                                start of new</a></h2>
+                        <h2><a href="resorsis/html/blogs/bermuda/jhon/story-one.html">Story One <br>The Sea Of
+                                Avaritias</a></h2>
                         <p>(bermuda)
                             summary coming soon
                         </p>
                     </section>
                 </li>
+
+                <li class="blog-post" id="story-one" data-tags="argone">
+                    <section>
+                        <h2><a href="resorsis/html/blogs/argone/hollowed-god.html">The Hollowed God</a></h2>
+                        <p>(argone)
+                            summary coming soon
+                        </p>
+                    </section>
+                </li>
+
+
 
             </ul>
         </section>
@@ -93,145 +107,145 @@
     </script>
 
     <!-- SEARCH + TAG DROPDOWN -->
-<script>
-    const searchInput = document.getElementById("blogSearch");
-    const tagContainer = document.getElementById("tagContainer");
-    const dropdown = document.getElementById("tagDropdown");
-    const posts = document.querySelectorAll(".blog-post");
+    <script>
+        const searchInput = document.getElementById("blogSearch");
+        const tagContainer = document.getElementById("tagContainer");
+        const dropdown = document.getElementById("tagDropdown");
+        const posts = document.querySelectorAll(".blog-post");
 
-    let activeTags = [];
+        let activeTags = [];
 
-    /* ---------------------------
-       COLLECT ALL TAGS
-    ---------------------------- */
-    const allTags = new Set();
-    posts.forEach(post => {
-        const tags = post.dataset.tags?.split(",") || [];
-        tags.forEach(t => allTags.add(t.trim()));
-    });
+        /* ---------------------------
+           COLLECT ALL TAGS
+        ---------------------------- */
+        const allTags = new Set();
+        posts.forEach(post => {
+            const tags = post.dataset.tags?.split(",") || [];
+            tags.forEach(t => allTags.add(t.trim()));
+        });
 
-    /* ---------------------------
-       CREATE TAG BUBBLE
-    ---------------------------- */
-    function addTagBubble(tag) {
-        if (activeTags.includes(tag)) return;
+        /* ---------------------------
+           CREATE TAG BUBBLE
+        ---------------------------- */
+        function addTagBubble(tag) {
+            if (activeTags.includes(tag)) return;
 
-        activeTags.push(tag);
+            activeTags.push(tag);
 
-        const bubble = document.createElement("div");
-        bubble.className = "tag-bubble";
-        bubble.innerHTML = `${tag} <span>x</span>`;
+            const bubble = document.createElement("div");
+            bubble.className = "tag-bubble";
+            bubble.innerHTML = `${tag} <span>x</span>`;
 
-        bubble.querySelector("span").onclick = () => {
-            bubble.remove();
-            activeTags = activeTags.filter(t => t !== tag);
+            bubble.querySelector("span").onclick = () => {
+                bubble.remove();
+                activeTags = activeTags.filter(t => t !== tag);
+                runSearch();
+            };
+
+            tagContainer.appendChild(bubble);
+            searchInput.value = "";
             runSearch();
-        };
-
-        tagContainer.appendChild(bubble);
-        searchInput.value = "";
-        runSearch();
-    }
-
-    /* ---------------------------
-       UPDATE DROPDOWN
-    ---------------------------- */
-    function updateDropdown(filter = "") {
-        dropdown.innerHTML = "";
-        const filtered = [...allTags].filter(tag =>
-            tag.toLowerCase().includes(filter.toLowerCase())
-        );
-
-        if (filtered.length === 0) {
-            dropdown.style.display = "none";
-            return;
         }
 
-        filtered.forEach(tag => {
-            const div = document.createElement("div");
-            div.className = "tag-option";
-            div.textContent = tag;
-            div.onclick = () => {
-                addTagBubble(tag);
+        /* ---------------------------
+           UPDATE DROPDOWN
+        ---------------------------- */
+        function updateDropdown(filter = "") {
+            dropdown.innerHTML = "";
+            const filtered = [...allTags].filter(tag =>
+                tag.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            if (filtered.length === 0) {
                 dropdown.style.display = "none";
-            };
-            dropdown.appendChild(div);
+                return;
+            }
+
+            filtered.forEach(tag => {
+                const div = document.createElement("div");
+                div.className = "tag-option";
+                div.textContent = tag;
+                div.onclick = () => {
+                    addTagBubble(tag);
+                    dropdown.style.display = "none";
+                };
+                dropdown.appendChild(div);
+            });
+
+            dropdown.style.display = "block";
+        }
+
+        /* ---------------------------
+           ANIMATED HIDE
+        ---------------------------- */
+        function hidePost(post) {
+            if (post.classList.contains("hidden") || post.classList.contains("hiding")) return;
+
+            post.classList.add("hiding");
+            setTimeout(() => {
+                post.classList.add("hidden");
+                post.classList.remove("hiding");
+            }, 350);
+        }
+
+        /* ---------------------------
+           ANIMATED SHOW
+        ---------------------------- */
+        function showPost(post) {
+            if (!post.classList.contains("hidden")) return;
+
+            post.classList.remove("hidden");
+            void post.offsetWidth;
+            post.classList.add("hiding");
+            requestAnimationFrame(() => {
+                post.classList.remove("hiding");
+            });
+        }
+
+        /* ---------------------------
+           MAIN SEARCH FUNCTION
+        ---------------------------- */
+        function runSearch() {
+            const textSearch = searchInput.value.toLowerCase();
+
+            posts.forEach(post => {
+                const id = (post.id || "").toLowerCase();
+                const tags = (post.dataset.tags || "").toLowerCase();
+
+                const matchesText = textSearch && (id.includes(textSearch) || tags.includes(textSearch));
+                const matchesTags = activeTags.some(t => tags.includes(t));
+
+                if (matchesText || matchesTags || (!textSearch && activeTags.length === 0)) {
+                    showPost(post);
+                } else {
+                    hidePost(post);
+                }
+            });
+        }
+
+        /* ---------------------------
+           INPUT EVENTS
+        ---------------------------- */
+        searchInput.addEventListener("input", () => {
+            updateDropdown(searchInput.value);
+            runSearch();
         });
 
-        dropdown.style.display = "block";
-    }
-
-    /* ---------------------------
-       ANIMATED HIDE
-    ---------------------------- */
-    function hidePost(post) {
-        if (post.classList.contains("hidden") || post.classList.contains("hiding")) return;
-
-        post.classList.add("hiding");
-        setTimeout(() => {
-            post.classList.add("hidden");
-            post.classList.remove("hiding");
-        }, 350);
-    }
-
-    /* ---------------------------
-       ANIMATED SHOW
-    ---------------------------- */
-    function showPost(post) {
-        if (!post.classList.contains("hidden")) return;
-
-        post.classList.remove("hidden");
-        void post.offsetWidth;
-        post.classList.add("hiding");
-        requestAnimationFrame(() => {
-            post.classList.remove("hiding");
-        });
-    }
-
-    /* ---------------------------
-       MAIN SEARCH FUNCTION
-    ---------------------------- */
-    function runSearch() {
-        const textSearch = searchInput.value.toLowerCase();
-
-        posts.forEach(post => {
-            const id = (post.id || "").toLowerCase();
-            const tags = (post.dataset.tags || "").toLowerCase();
-
-            const matchesText = textSearch && (id.includes(textSearch) || tags.includes(textSearch));
-            const matchesTags = activeTags.some(t => tags.includes(t));
-
-            if (matchesText || matchesTags || (!textSearch && activeTags.length === 0)) {
-                showPost(post);
-            } else {
-                hidePost(post);
+        searchInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && searchInput.value.trim() !== "") {
+                addTagBubble(searchInput.value.trim());
+                dropdown.style.display = "none";
             }
         });
-    }
 
-    /* ---------------------------
-       INPUT EVENTS
-    ---------------------------- */
-    searchInput.addEventListener("input", () => {
-        updateDropdown(searchInput.value);
-        runSearch();
-    });
+        searchInput.addEventListener("focus", () => {
+            updateDropdown(searchInput.value);
+        });
 
-    searchInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && searchInput.value.trim() !== "") {
-            addTagBubble(searchInput.value.trim());
-            dropdown.style.display = "none";
-        }
-    });
-
-    searchInput.addEventListener("focus", () => {
-        updateDropdown(searchInput.value);
-    });
-
-    document.addEventListener("click", (e) => {
-        if (!searchInput.contains(e.target)) dropdown.style.display = "none";
-    });
-</script>
+        document.addEventListener("click", (e) => {
+            if (!searchInput.contains(e.target)) dropdown.style.display = "none";
+        });
+    </script>
 
 
 

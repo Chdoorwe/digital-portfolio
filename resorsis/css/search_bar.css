@@ -11,8 +11,8 @@
     position: relative;
     width: 100%;
     min-height: 45px;
-    background: #1a1a1a;
-    border: 2px solid #444;
+    background: #121213;
+    border: 2px solid #353538;
     border-radius: 6px;
     padding: 6px;
     display: flex;
@@ -27,17 +27,7 @@
    These appear when the user selects a tag.
    They sit inside the search bar like Discord/Gmail chips.
 ============================================================ */
-.tag-bubble {
-    background: #00ff88;
-    color: #000;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-}
+
 
 /* "x" button inside the bubble */
 .tag-bubble span {
@@ -71,8 +61,8 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background: #222;
-    border: 1px solid #444;
+    background: #121213;
+    border: 1px solid #353538;
     border-radius: 6px;
     display: none;
     max-height: 200px;
@@ -83,12 +73,12 @@
 .tag-option {
     padding: 10px;
     cursor: pointer;
-    color: #eee;
+    color: #17b92c;
 }
 
 .tag-option:hover {
-    background: #00ff88;
-    color: #000;
+    background-color: #121213;
+    color: #40ff59;
 }
 
 /* ============================================================
@@ -113,4 +103,29 @@
 
 .blog-post.hidden {
     display: none;
+}
+#search-input {
+    width: 260px;
+    padding: 10px 12px;
+    font-family: "Press Start 2P", monospace;
+    font-size: 12px;
+    background-color: #121213;
+    color: #40ff59;
+    border: 3px solid #40ff59;
+    outline: none;
+
+    background-image:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(64,255,89,0.05) 0px,
+            rgba(64,255,89,0.05) 1px,
+            rgba(0,0,0,0.15) 2px
+        );
+
+    filter: contrast(1.15) brightness(1.05);
+
+    /* FIX: keep clickable */
+    pointer-events: auto;
+    position: relative;
+    z-index: 9999;
 }
