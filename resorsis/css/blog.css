@@ -5,7 +5,12 @@ body {
     font-size: 13px;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     text-align: center;
     font-size: 2em;
 }
@@ -20,14 +25,15 @@ h1,h2,h3,h4,h5,h6 {
     margin-bottom: 40px;
     list-style: none;
 }
-.blog-post-container{
+
+.blog-post-container {
     display: flex;
     justify-content: center;
 }
 
-.Blog-post-list{
-      display: flex;
-  flex-direction: column-reverse;
+.Blog-post-list {
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 /*======================*/
@@ -62,7 +68,7 @@ h1,h2,h3,h4,h5,h6 {
     margin-bottom: 30px;
 }
 
-.LA-class-id li{
+.LA-class-id li {
     margin-bottom: 20px;
     padding: 1px;
 }
@@ -86,7 +92,7 @@ h1,h2,h3,h4,h5,h6 {
     margin-top: 40px;
 }
 
-.LA-transcript-date li{
+.LA-transcript-date li {
     margin-bottom: 10px;
     padding: 1px;
     list-style-type: none;
@@ -120,14 +126,11 @@ h1,h2,h3,h4,h5,h6 {
 /*======================*/
 
 /* universal styles effects */
-.LA-container p,li,.LA-transcript-date li,.blog-post-container{
+.LA-container p,
+li,
+.LA-transcript-date li,
+.blog-post-container {
     max-width: 600px;
 }
 
 /*======================*/
-
-
-
-
-
-
