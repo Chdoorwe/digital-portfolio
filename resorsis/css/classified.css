@@ -1,0 +1,198 @@
+:root {
+  --paper-bg: #f5f0e6;
+  --ink-color: #111111;
+  --accent-red: #b30000;
+  --accent-yellow: #e0b800;
+  --stamp-red: #c01818;
+  --redact: #000000;
+  --typewriter-font: "Courier New", Courier, monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #222;
+  font-family: var(--typewriter-font);
+}
+
+a{
+  text-decoration: none;
+  color: var(--ink-color);
+  cursor:text;
+}
+
+.document-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 10px;
+}
+
+.document {
+  width: 800px;
+  max-width: 95vw;
+  background: var(--paper-bg);
+  color: var(--ink-color);
+  padding: 40px 50px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+  border: 1px solid #d0c7b5;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle paper noise / texture using gradients */
+.document::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(0,0,0,0.06) 0, transparent 55%),
+    radial-gradient(circle at 80% 70%, rgba(0,0,0,0.05) 0, transparent 55%);
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+}
+
+/* header area */
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.doc-meta {
+  font-size: 12px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.doc-meta .label {
+  font-weight: bold;
+}
+
+.doc-title-block {
+  text-align: right;
+}
+
+.doc-title {
+  font-size: 20px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.doc-id {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+}
+
+/* classified stamp */
+.stamp {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 2px solid var(--stamp-red);
+  color: var(--stamp-red);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 12px;
+  transform: rotate(-6deg);
+  margin-top: 10px;
+}
+
+/* warning banner */
+.warning-banner {
+  border-top: 2px solid var(--accent-red);
+  border-bottom: 2px solid var(--accent-red);
+  padding: 8px 0;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-red);
+}
+
+/* body text */
+.doc-body {
+  font-size: 14px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.doc-section-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+.doc-hr {
+  border: none;
+  border-top: 1px dashed #999;
+  margin: 8px 0 16px;
+}
+
+/* redacted text */
+.redacted {
+  background: var(--redact);
+  color: transparent;
+  border-radius: 2px;
+  padding: 0 0.4em;
+}
+
+/* typewriter emphasis */
+.type-label {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+}
+
+/* footer */
+.doc-footer {
+  margin-top: 40px;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* punch holes on the left */
+.document::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 40px;
+  bottom: 40px;
+  width: 10px;
+  background:
+    radial-gradient(circle, #d0c7b5 0, #d0c7b5 55%, transparent 56%) 0 0/100% 60px repeat-y;
+  opacity: 0.9;
+}
+
+/* optional: slight color shift for 80s feel */
+@media (prefers-reduced-motion: no-preference) {
+  .document {
+    animation: subtle-fade 0.4s ease-out;
+  }
+}
+
+@keyframes subtle-fade {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

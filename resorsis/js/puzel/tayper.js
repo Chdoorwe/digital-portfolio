@@ -17,6 +17,6 @@ document.addEventListener("keydown", (event) => {
         console.log("Pattern detected:", pattern);
         // Do something here
         buffer = ""; // optional reset
-        window.location.href = "puzel_end.html";
+        window.location.href = "resorsis/puzzels/The_document.html";
     }
 });

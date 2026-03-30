@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    <script src="resorsis/docs-puzzle/inventory.js"></script>
+    <script src="resorsis/docs-puzzle/inventory-ui.js"></script>
+
+
     <audio id="audio" src="resorsis/sound/beep.wav"></audio>
     <audio id="rare-audio" src="resorsis/sound/metal_pipes.wav"></audio>
 
@@ -35,7 +39,7 @@
         </section>
     </header>
 
-
+    
 
     <main>
         <section id="About-me">
@@ -89,6 +93,12 @@
             </p>
         </section>
         </section>
+
+        <section id="TheStart" class="hidden">
+            <p>
+                The <a href="https://github.com/Chdoorwe/digital-portfolio" target="_blank">Commits</a> of the past is the key  
+            </p>
+        </section>
     </main>
 
     <footer>
@@ -99,11 +109,27 @@
     <script src="resorsis/js/puzel/tayper.js"></script>
 
     <script>
+        let puzzleHuntRan = localStorage.getItem("puzelHuntRan") === "true";
+
+    function updateVisibility(condition, elementId) {
+        if (condition) {
+        elementId.style.display = "block";   // show
+    } else {
+        elementId.style.display = "none";    // hide
+    }
+
+  
+}
+  updateVisibility(puzzleHuntRan, "TheStart");
+// Run it immediately when the page loads
+
+
+
 
         const audio = document.getElementById("audio");
         const rareAudio = document.getElementById("rare-audio"); // 5% sound
         const hoverItems = document.querySelectorAll(".nav-link, .nav-butten");
-        
+
 
         hoverItems.forEach(item => {
             item.addEventListener("mouseover", () => {

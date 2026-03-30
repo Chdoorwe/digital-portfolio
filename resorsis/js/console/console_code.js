@@ -231,23 +231,35 @@ addCommand("hi", async () => {
 
 // Secret command
 
-
-addCommand("run:/fuc-puzel.hunt", async () => {
+addCommand("run:/fuc-the.truthDell", async () => {
   crtFlicker();
+
+  puzzleHuntRan = false;
+  localStorage.setItem("puzelHuntRan", "false");
+
+}, { hidden: true });
+
+
+addCommand("run:/fuc-the.truth", async () => {
+  crtFlicker();
+
+  
 
   // If already run
   if (puzzleHuntRan === true) {
-    await typeLine("Puzel hunt protocol has already been run.");
+    await typeLine("the truth has already been starred to show its self.");
     return;
   }
 
   // First‑time run
-  await typeLine("Starting puzel hunt protocal");
+  await typeLine("so you pick the truth i see");
 
   puzzleHuntRan = true;
   localStorage.setItem("puzelHuntRan", "true");
 
 }, { hidden: true });
+
+
 
 
 addCommand("index.html", async () => {
