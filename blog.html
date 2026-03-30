@@ -33,9 +33,12 @@
         <h1><a href="index.html">Archives</a></h1>
     </header>
 
+
     <main>
         <div id="special">all is not what its seems <a href="projects.html">here</a> the bass of the tree of
             life "hello"</div>
+
+        <div id="lostArchives">Hello</div>
 
         <section class="LA-container ">
             <ul class="Blog-post-list">
@@ -84,6 +87,14 @@
         © Copyright 2025
     </footer>
 
+    <script src="resorsis/js/puzel/VisibilityPuzels.js"></script>
+
+    <script>
+        let puzzleNumber = parseInt(localStorage.getItem("puzzleNumber")) || 0;
+
+        updateVisibility(puzzleNumber > 0, "lostArchives");
+    </script>
+
     <script>
         // Show special message sometimes
         window.onload = function () {
@@ -92,6 +103,7 @@
                 document.getElementById("special").style.display = "block";
             }
         };
+
 
         // Apply saved readability mode
         if (localStorage.getItem("readable") === "true") {

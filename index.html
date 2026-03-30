@@ -39,7 +39,7 @@
         </section>
     </header>
 
-    
+
 
     <main>
         <section id="About-me">
@@ -96,7 +96,8 @@
 
         <section id="TheStart" class="hidden">
             <p>
-                The <a href="https://github.com/Chdoorwe/digital-portfolio" target="_blank">Commits</a> of the past is the key  
+                The <a id="myLink" href="https://github.com/Chdoorwe/digital-portfolio" target="_blank">Commits</a> of
+                the past is the key
             </p>
         </section>
     </main>
@@ -107,21 +108,15 @@
     </footer>
 
     <script src="resorsis/js/puzel/tayper.js"></script>
+    <script src="resorsis/js/puzel/VisibilityPuzels.js"></script>
 
     <script>
         let puzzleHuntRan = localStorage.getItem("puzelHuntRan") === "true";
 
-    function updateVisibility(condition, elementId) {
-        if (condition) {
-        elementId.style.display = "block";   // show
-    } else {
-        elementId.style.display = "none";    // hide
-    }
+        updateVisibility(puzzleHuntRan, "TheStart");
 
-  
-}
-  updateVisibility(puzzleHuntRan, "TheStart");
-// Run it immediately when the page loads
+        
+        // Run it immediately when the page loads
 
 
 
@@ -153,7 +148,17 @@
             });
         });
 
+        document.getElementById("myLink").addEventListener("click", () => {
+            let num = parseInt(localStorage.getItem("puzzleNumber")) || 0;
 
+            // only change it if it's still 0
+            if (num === 0) {
+                localStorage.setItem("puzzleNumber", 1);
+                console.log("puzzleNumber set to 1");
+            } else {
+                console.log("puzzleNumber already set, not changing");
+            }
+        });
 
     </script>
 
