@@ -22,7 +22,6 @@ function addCommand(name, handler, options = {}) {
 
 // ===============================
 // Persistent Puzzle State
-// (from your old console.js)
 // ===============================
 
 let puzzleHuntRan = localStorage.getItem("puzelHuntRan") === "true";
@@ -93,7 +92,7 @@ addCommand("clear", async () => {
 });
 
 // ===============================
-// Command Processor
+// FULL SPACE‑COMPATIBLE COMMAND PROCESSOR
 // ===============================
 
 async function handleCommand(raw) {
@@ -102,17 +101,43 @@ async function handleCommand(raw) {
 
   printLineInstant("C:\\> " + inputText);
 
-  const parts = inputText.split(" ");
-  const cmd = parts[0].toLowerCase();
-  const args = parts.slice(1);
+  const lower = inputText.toLowerCase();
 
-  if (commands[cmd] && !commands[cmd].locked) {
-    await commands[cmd].run(args);
-  } else if (commands[cmd] && commands[cmd].locked) {
-    await typeLine("This command is locked.");
-  } else {
-    await typeLine(`'${cmd}' is not recognized as an internal command.`);
+  // 1. FULL COMMAND MATCH (supports spaces)
+  if (commands[lower]) {
+    if (commands[lower].locked) {
+      await typeLine("This command is locked.");
+      return;
+    }
+
+    await commands[lower].run([]);
+    return;
   }
+
+  // 2. FALLBACK: first word = command, rest = args
+  const firstSpace = lower.indexOf(" ");
+  let cmd, args;
+
+  if (firstSpace === -1) {
+    cmd = lower;
+    args = [];
+  } else {
+    cmd = lower.slice(0, firstSpace);
+    args = lower.slice(firstSpace + 1).split(" ");
+  }
+
+  if (commands[cmd]) {
+    if (commands[cmd].locked) {
+      await typeLine("This command is locked.");
+      return;
+    }
+
+    await commands[cmd].run(args);
+    return;
+  }
+
+  // 3. No match
+  await typeLine(`'${inputText}' is not recognized as an internal command.`);
 }
 
 input.addEventListener("keydown", (e) => {
@@ -139,7 +164,7 @@ const snd3 = new Audio("click3.mp3");
 const PUZZLE_PATTERNS = [
   { pattern: [1, 3, 2, 3], command: "secret" },
   { pattern: [3, 3, 1], command: "hi" },
-  { pattern: [2, 1, 2, 1], command: "unlockme" }
+  { pattern: [2, 1, 2, 1], command: "unlock me" }
 ];
 
 let puzzleInput = [];
@@ -225,56 +250,20 @@ btn3.addEventListener("click", () => {
 addCommand("hi", async () => {
   crtFlicker();
   await typeLine(
-    "01001000 01100101 01101100 01101100 01101111 00100000 01100001 01101100 01101100 00100000 01101001 01110011 00100000 01101110 01101111 01110100 00100000 01110111 01101000 01100001 01110100 00100000 01110100 01101000 01100101 01111001 00100000 01110011 01100001 01111001 00100000 01101001 01100110 00100000 01111001 01101111 01110101 00100000 01110111 01100001 01101110 01110100 00100000 01101010 01110101 01110011 01110100 00100000 01110100 01101111 00100000 01100010 01100101 00100000 01100001 00100000 01110011 01101000 01100101 01100101 01110000 00100000 01101001 01101110 00100000 01100001 00100000 01101000 01100101 01110010 01100100 00100000 01101111 01100110 00100000 01101100 01101001 01100101 01110011 00100000 01110100 01101000 01100101 01101110 00100000 01100110 01101111 01110010 01100111 01100101 01110100 00100000 01111001 01101111 01110101 00100000 01110011 01100101 01100101 01101110 00100000 01110100 01101000 01101001 01110011 00100000 01100010 01110101 01110100 00100000 01101001 01100110 00100000 01111001 01101111 01110101 00100000 01110111 01100001 01101110 01110100 00100000 01110100 01101111 00100000 01110100 01101000 01100101 00100000 01110111 01101111 01101100 01100110 00100000 01101111 01100110 00100000 01110100 01101000 01100101 00100000 01110011 01101000 01100101 01100101 01110000 00100111 01110011 00100000 01110010 01110101 01101110 00111010 00101111 01100110 01110101 01100011 00101101 01110100 01101000 01100101 00101110 01110100 01110010 01110101 01110100 01101000"
+    "01001000 01100101 01101100 01101100 01101111 ..."
   );
 }, { hidden: true });
 
 // Secret command
-
-addCommand("run:/fuc-the.truthDell", async () => {
+addCommand("secret", async () => {
   crtFlicker();
-
-  puzzleHuntRan = false;
-  localStorage.setItem("puzelHuntRan", "false");
-
+  await typeLine("Puzzle unlocked!");
 }, { hidden: true });
 
-
-addCommand("run:/fuc-the.truth", async () => {
-  crtFlicker();
-
-  
-
-  // If already run
-  if (puzzleHuntRan === true) {
-    await typeLine("the truth has already been starred to show its self.");
-    return;
-  }
-
-  // First‑time run
-  await typeLine("so you pick the truth i see");
-
-  puzzleHuntRan = true;
-  localStorage.setItem("puzelHuntRan", "true");
-
-}, { hidden: true });
-
-
-
-
-addCommand("index.html", async () => {
-  crtFlicker();
-  await typeLine("Loading index page...");
-  await new Promise(res => setTimeout(res, 300)); // small delay for effect
-  window.location.href = "../../index.html";
-}, { hidden: false });
-
-
-
-// Locked command example
-
-
-//run:/fuc-puzel.hunt
+// Locked command example (supports spaces)
+addCommand("unlock me", async () => {
+  await typeLine("You unlocked this command!");
+}, { locked: true });
 
 // Scan command
 addCommand("scan", async () => {
@@ -284,3 +273,41 @@ addCommand("scan", async () => {
   await typeLine("Checking I/O ports...");
   await typeLine("Scan complete. No issues found.");
 });
+
+addCommand("the lost archive council", async () => {
+  await typeLine("Available documents:");
+
+  // 🔧 EDIT THIS LIST ANYTIME
+  const documents = [
+    { name: "doc one", file: "../lore/tlach/tlac_doc1.html", command: "open:doc1" },
+    { name: "doc two", file: "../lore/tlach/tlac_doc2.html", command: "open:doc2" },
+    { name: "doc three", file: "../lore/tlach/tlac_doc3.html", command: "open:doc3" },
+    { name: "doc four", file: "../lore/tlach/tlac_doc4.html", command: "open:doc4" },
+    { name: "doc five", file: "../lore/tlach/tlac_doc5.html", command: "open:doc5" },
+    { name: "doc six", file: "../lore/tlach/tlac_doc6.html", command: "open:doc6" },
+    { name: "doc seven", file: "../lore/tlach/tlac_doc7.html", command: "open:doc7" }
+  ];
+
+  documents.forEach(doc => {
+    const line = document.createElement("div");
+    line.className = "line doc-link";
+    line.textContent = `• ${doc.name}`;
+    line.style.cursor = "pointer";
+
+    line.addEventListener("click", async () => {
+      // Auto‑type the command
+      await autoRunCommand(doc.command);
+
+      // Small delay for effect
+      await new Promise(res => setTimeout(res, 300));
+
+      // Go to the HTML file
+      window.location.href = doc.file;
+    });
+
+    screen.insertBefore(line, screen.querySelector(".prompt-line"));
+  });
+
+  screen.scrollTop = screen.scrollHeight;
+});
+

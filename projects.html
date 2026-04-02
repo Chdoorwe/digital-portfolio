@@ -30,12 +30,21 @@
 
     <main>
 
-
+<div id="lostArchives">hello</div>
 
 
 
 
     </main>
+
+    
+    <script src="resorsis/js/puzel/VisibilityPuzels.js"></script>
+
+    <script>
+        let puzzleNumber = parseInt(localStorage.getItem("puzzleNumber")) || 0;
+
+        updateVisibility(puzzleNumber > 0, "lostArchives");
+    </script>
 </body>
 
 <footer>

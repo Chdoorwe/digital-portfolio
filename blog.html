@@ -39,6 +39,7 @@
             life "hello"</div>
 
         <div id="lostArchives">Hello</div>
+        
 
         <section class="LA-container ">
             <ul class="Blog-post-list">
@@ -87,13 +88,6 @@
         © Copyright 2025
     </footer>
 
-    <script src="resorsis/js/puzel/VisibilityPuzels.js"></script>
-
-    <script>
-        let puzzleNumber = parseInt(localStorage.getItem("puzzleNumber")) || 0;
-
-        updateVisibility(puzzleNumber > 0, "lostArchives");
-    </script>
 
     <script>
         // Show special message sometimes
@@ -257,6 +251,12 @@
         document.addEventListener("click", (e) => {
             if (!searchInput.contains(e.target)) dropdown.style.display = "none";
         });
+
+
+
+
+
+
     </script>
 
 
