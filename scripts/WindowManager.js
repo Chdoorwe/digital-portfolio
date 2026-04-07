@@ -156,7 +156,44 @@ export class WindowManager {
     } else if (appDef.linkedHtmlFile) {
       // If the user wants to link an HTML file, the engine automatically 
       // configures a seamless sandbox to render it while preserving its CSS!
-      contentEl.innerHTML = `<iframe src="${appDef.linkedHtmlFile}" style="flex-grow:1; border:none; width:100%; height:100%; background: #ffffff;"></iframe>`;
+
+      if (appDef.documentStyle === 'wordpad') {
+        // Renders the HTML document as if it were opened in a native word processor tool!
+        contentEl.innerHTML = `
+          <div style="display:flex; flex-direction:column; height: 100%; box-sizing: border-box;">
+            <div style="padding: 2px 4px; border-bottom: 2px groove #fff; margin-bottom: 2px; background:#c0c0c0; display:flex; gap:10px; font-size: 11px;">
+              <span style="margin-right:10px; cursor:pointer;"><u>F</u>ile</span> 
+              <span style="margin-right:10px; cursor:pointer;"><u>E</u>dit</span> 
+              <span style="margin-right:10px; cursor:pointer;"><u>V</u>iew</span> 
+              <span style="cursor:pointer;"><u>H</u>elp</span>
+            </div>
+            <div style="padding: 2px 4px; border-bottom: 2px groove #fff; margin-bottom: 2px; background:#c0c0c0; display:flex; gap:4px;">
+              <button class="os-btn" style="padding: 1px 6px; font-weight:bold;">B</button>
+              <button class="os-btn" style="padding: 1px 6px; font-style:italic;">I</button>
+              <button class="os-btn" style="padding: 1px 6px; text-decoration:underline;">U</button>
+              <div style="border-left: 2px groove #fff; border-right: 2px groove #fff; margin: 0 4px; width:0px;"></div>
+              <select class="os-input" style="padding: 0px 4px; font-size:11px;">
+                <option>Times New Roman</option>
+                <option>Arial</option>
+              </select>
+            </div>
+            <div style="flex-grow:1; padding: 2px; background: #c0c0c0; display:flex; flex-direction:column;">
+              <iframe src="${appDef.linkedHtmlFile}" style="flex-grow:1; border: 2px inset #fff; width:100%; height:100%; margin:0; padding:0; background: #ffffff;"></iframe>
+            </div>
+          </div>
+        `;
+      } else {
+        // Defaults to rendering the HTML document as a standard web browser URL!
+        contentEl.innerHTML = `
+          <div style="display:flex; flex-direction:column; height: 100%;">
+            <div style="padding: 4px; border-bottom: 2px groove #fff; margin-bottom: 2px; background:#c0c0c0; display:flex; gap:10px; align-items: center;">
+              <span style="font-weight:bold;">URL:</span>
+              <input type="text" value="${appDef.linkedHtmlFile}" class="os-input" style="flex-grow:1; background: #fff; color: #000;" disabled />
+            </div>
+            <iframe src="${appDef.linkedHtmlFile}" style="flex-grow:1; border:none; width:100%; height:100%; background: #ffffff;"></iframe>
+          </div>
+        `;
+      }
     }
 
     // 6. Create Taskbar Button Entry

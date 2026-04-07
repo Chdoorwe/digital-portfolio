@@ -77,6 +77,15 @@ export const appDefinitions = [
 
       // Step 1: Define what files are INSIDE this folder!
       const innerFiles = [
+        {
+          id: 'password',
+          name: 'My password',
+          icon: '📄',
+          width: 450,
+          height: 350,
+          linkedHtmlFile: 'resorsis/lore/puzzle/password.html',
+          documentStyle: 'wordpad'
+        },
 
         // ✨ HERE IS A NESTED FOLDER ✨
         {
@@ -91,7 +100,7 @@ export const appDefinitions = [
             // Inside the nested folder, we define MORE files!
             const veryDeepFiles = [
               {
-                id: 'html-viewer',
+                id: 'lr-rc',
                 name: 'lr-rc',
                 icon: '📄',
                 width: 450,
@@ -100,7 +109,8 @@ export const appDefinitions = [
                 password: 'deep',
                 // Because we just updated WindowManager.js, you can now simply link ANY HTML file!
                 // It will automatically construct the isolated container, keep its CSS, and scroll effortlessly.
-                linkedHtmlFile: 'resorsis/lore/tlach/lr-rcDoc2.html'
+                linkedHtmlFile: 'resorsis/lore/tlach/lr-rcDoc2.html',
+                documentStyle: 'wordpad'
               }
             ];
             // Render the inner folder using our reusable helper function

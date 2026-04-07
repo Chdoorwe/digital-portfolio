@@ -96,7 +96,7 @@ powerBtn.addEventListener('click', () => {
 
 const handleOsLogin = () => {
   // Master boot password check
-  if (osPassword.value === '') {
+  if (osPassword.value === 'SCRIBE 4‑Δ') {
     // Boot into OS!
     loginScreen.style.display = 'none';
   } else {
