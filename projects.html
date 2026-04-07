@@ -8,6 +8,8 @@
     <title>Projects</title>
 
     <link rel="stylesheet" href="resorsis/css/stayle.css">
+    <link rel="stylesheet" href="resorsis/css/puzzel.css">
+
 </head>
 
 <body class="">
@@ -17,7 +19,7 @@
     <header>
         <section class="nav-butten">
             <h1>
-                <a href="index.html">
+                <a id="myLink" href="index.html">
                     Projects
                 </a>
             </h1>
@@ -30,14 +32,17 @@
 
     <main>
 
-<div id="lostArchives">hello</div>
+        <div id="lostArchives" class="fragmentFlicker">
+           it— liesss— it— the the projec-ts— thay— SHIFT— whn— now— one— l-looks— as the KEYs— m-move— the— the— PROJECTS— 
+
+        </div>
 
 
 
 
     </main>
 
-    
+
     <script src="resorsis/js/puzel/VisibilityPuzels.js"></script>
 
     <script>
@@ -72,6 +77,12 @@
         });
     });
 
+    document.getElementById("myLink").addEventListener("click", function (e) {
+        if (e.shiftKey) {
+            e.preventDefault();              // stop normal link
+            window.location.href = "computer.html"; // go to alternate page
+        }
+    });
 
 </script>
 

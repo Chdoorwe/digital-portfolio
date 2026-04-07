@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Because this is an iframe, none of these styles will break the parent's Vintage OS CSS! */
+    body { 
+      font-family: 'Georgia', serif; 
+      background: #faf8ef; 
+      color: #333; 
+      padding: 20px; 
+      margin: 0;
+    }
+    h1 { color: #8b0000; border-bottom: 2px solid #8b0000; padding-bottom: 5px; }
+    p { line-height: 1.6; }
+    .box { 
+      border: 2px dashed crimson; 
+      padding: 15px; 
+      margin-top: 15px; 
+      background: #fff;
+    }
+    .spacer { height: 800px; }
+  </style>
+</head>
+<body>
+  <h1>External HTML Document</h1>
+  
+  <p>This is a completely standalone HTML file! It has its own CSS rules inside its <code>&lt;head&gt;</code>, and it doesn't conflict with the Vintage OS styles at all!</p>
+  
+  <div class="box">
+    Because it's loaded securely via an <b>iframe</b>, it keeps its own aesthetic perfectly isolated.
+  </div>
+
+  <p>Scroll down to see the vertical scrolling in action...</p>
+  
+  <div class="spacer"></div>
+
+  <p>The scrolling works perfectly independently of the main OS!</p>
+</body>
+</html>

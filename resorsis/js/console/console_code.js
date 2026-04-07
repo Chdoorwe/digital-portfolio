@@ -156,9 +156,9 @@ const btn2 = document.getElementById("btn-2");
 const btn3 = document.getElementById("btn-3");
 
 // Sound Effects
-const snd1 = new Audio("click1.mp3");
-const snd2 = new Audio("click2.mp3");
-const snd3 = new Audio("click3.mp3");
+const snd1 = new Audio("../sounds/beep.wav");
+const snd2 = new Audio("../sounds/beep.wav");
+const snd3 = new Audio("../sounds/beep.wav");
 
 // Multiple Puzzle Patterns
 const PUZZLE_PATTERNS = [
@@ -339,5 +339,13 @@ addCommand("run:/fuc-the.truth", async () => {
   localStorage.setItem("puzelHuntRan", "true");
 
 }, { hidden: true });
+
+addCommand("index.html", async () => {
+  crtFlicker();
+  await typeLine("Loading index page...");
+  await new Promise(res => setTimeout(res, 300)); // small delay for effect
+  window.location.href = "../../index.html";
+}, { hidden: false });
+
 
 
