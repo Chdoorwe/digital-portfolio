@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro OS Web Environment</title>
+  <link rel="stylesheet" href="styles/os.css">
+  <link rel="stylesheet" href="styles/window.css">
+</head>
+<body>
+  <div class="physical-room">
+    <div class="monitor-chassis">
+      
+      <div class="monitor-bezel">
+        <div class="crt-glass">
+          
+          <!-- Inner OS Desktop -->
+          <div id="desktop" class="desktop"></div>
+
+          <!-- The Windows 95/98 style taskbar at the bottom -->
+          <div id="taskbar" class="taskbar">
+            <button id="start-button" class="start-button">
+              <span style="font-size: 14px; margin-right: 2px;">❖</span> Start
+            </button>
+            <div id="taskbar-apps" class="taskbar-apps"></div>
+            <div id="clock" class="clock">12:00 PM</div>
+          </div>
+
+          <!-- Overlay Screens -->
+          <div id="login-screen" class="os-overlay" style="display:none;">
+            <div class="login-dialog window">
+              <div class="title-bar">
+                <div class="title-bar-text"><span>🔑</span> Login</div>
+              </div>
+              <div class="window-content" style="padding: 15px; text-align: center;">
+                <h3 style="margin-top: 0;">Welcome to Retro OS</h3>
+                <p>Please enter your password to boot:</p>
+                <div style="display:flex; justify-content:center; gap: 5px;">
+                  <input type="password" id="os-password" class="os-input" placeholder="Password..." />
+                  <button id="os-login-btn" class="os-btn">OK</button>
+                </div>
+                <p style="color: #666; font-size: 9px; margin-top: 15px;"></p>
+              </div>
+            </div>
+          </div>
+
+          <div id="off-screen" class="os-overlay off-state"></div>
+
+        </div>
+      </div>
+      
+      <!-- Monitor branding & power button below screen -->
+      <div class="monitor-base-details">
+        <div class="monitor-logo">SCRIBE 4‑Δ</div>
+        <div class="monitor-controls">
+          <div class="monitor-button"></div>
+          <div class="monitor-button"></div>
+          <div class="monitor-button"></div>
+          <div class="monitor-power">
+            <div id="power-led" class="power-led off"></div>
+            <button id="power-btn" class="power-btn" style="cursor:pointer;"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="monitor-stand"></div>
+    <div class="monitor-stand-base"></div>
+  </div>
+
+  <!-- Load our main application entry point -->
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
