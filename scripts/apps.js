@@ -86,6 +86,15 @@ export const appDefinitions = [
           linkedHtmlFile: 'resorsis/lore/puzzle/password.html',
           documentStyle: 'wordpad'
         },
+        {
+          id: 'console',
+          name: 'The Console',
+          icon: '🔳',
+          width: 450,
+          height: 350,
+          linkedHtmlFile: 'resorsis/the_console/the_console.html',
+          documentStyle: 'wordpad'
+        },
 
         // ✨ HERE IS A NESTED FOLDER ✨
         {
@@ -100,17 +109,33 @@ export const appDefinitions = [
             // Inside the nested folder, we define MORE files!
             const veryDeepFiles = [
               {
-                id: 'lr-rc',
-                name: 'lr-rc',
-                icon: '📄',
-                width: 450,
-                height: 350,
+                id: 'Hope',
+                name: 'Hope',
+                icon: '📁',
+                width: 350,
+                height: 250,
+                // You can lock this nested folder with a password too!
                 requiresPassword: true,
-                password: 'deep',
-                // Because we just updated WindowManager.js, you can now simply link ANY HTML file!
-                // It will automatically construct the isolated container, keep its CSS, and scroll effortlessly.
-                linkedHtmlFile: 'resorsis/lore/tlach/lr-rcDoc2.html',
-                documentStyle: 'wordpad'
+                password: 'TheEnd',
+                renderContent: (deepContainer) => {
+                  // Inside the nested folder, we define MORE files!
+                  const veryDeepFiles = [
+                    {
+                      id: 'lr-rc',
+                      name: 'lr-rc',
+                      icon: '📄',
+                      width: 450,
+                      height: 350,
+                      requiresPassword: false,
+                      // Because we just updated WindowManager.js, you can now simply link ANY HTML file!
+                      // It will automatically construct the isolated container, keep its CSS, and scroll effortlessly.
+                      linkedHtmlFile: 'resorsis/lore/tlach/lr-rcDoc2.html',
+                      documentStyle: 'wordpad'
+                    }
+                  ];
+                  // Render the inner folder using our reusable helper function
+                  renderFolderExplorer(deepContainer, 'C:\\Classified\\Deep Secrets\\', veryDeepFiles);
+                }
               }
             ];
             // Render the inner folder using our reusable helper function

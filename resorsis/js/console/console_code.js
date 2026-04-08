@@ -349,11 +349,9 @@ addCommand("index.html", async () => {
 
 
 
-addCommand("index.html", async () => {
+addCommand("run:/fuc-Password", async () => {
   crtFlicker();
-  await typeLine("Loading index page...");
-  await new Promise(res => setTimeout(res, 300)); // small delay for effect
-  window.location.href = "../../index.html";
+  await typeLine("The End Is Near And A new Chapter Shall Start >TheEnd<");
 }, { hidden: false });
 
 
