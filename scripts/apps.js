@@ -127,9 +127,17 @@ export const appDefinitions = [
                       width: 450,
                       height: 350,
                       requiresPassword: false,
-                      // Because we just updated WindowManager.js, you can now simply link ANY HTML file!
-                      // It will automatically construct the isolated container, keep its CSS, and scroll effortlessly.
                       linkedHtmlFile: 'resorsis/lore/tlach/lr-rcDoc2.html',
+                      documentStyle: 'wordpad'
+                    },
+                    {
+                      id: 'T-H',
+                      name: 'T-H',
+                      icon: '📄',
+                      width: 450,
+                      height: 350,
+                      requiresPassword: false,
+                      linkedHtmlFile: 'resorsis/lore/aregon/the_huntsman.html',
                       documentStyle: 'wordpad'
                     }
                   ];
