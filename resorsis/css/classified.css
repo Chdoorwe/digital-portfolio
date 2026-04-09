@@ -16,9 +16,7 @@ body {
 }
 
 a{
-  text-decoration: none;
   color: var(--ink-color);
-  cursor:text;
 }
 
 .document-wrapper {

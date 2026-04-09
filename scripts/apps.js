@@ -83,7 +83,7 @@ export const appDefinitions = [
           icon: '📄',
           width: 450,
           height: 350,
-          linkedHtmlFile: 'resorsis/lore/puzzle/password.html',
+          linkedHtmlFile: 'resorsis/lore/puzzels/password.html',
           documentStyle: 'wordpad'
         },
         {
