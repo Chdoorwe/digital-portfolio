@@ -139,6 +139,17 @@ export const appDefinitions = [
                       requiresPassword: false,
                       linkedHtmlFile: 'resorsis/lore/aregon/the_huntsman.html',
                       documentStyle: 'wordpad'
+                    },
+                    {
+                      id: 'CH',
+                      name: 'Ch',
+                      icon: '📄',
+                      width: 450,
+                      height: 350,
+                      requiresPassword: true,
+                      password: 'Chdoorwe Hellsin',
+                      linkedHtmlFile: 'resorsis/lore/aregon/chdoorwe.html',
+                      documentStyle: 'wordpad'
                     }
                   ];
                   // Render the inner folder using our reusable helper function
