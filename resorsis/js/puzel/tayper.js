@@ -1,4 +1,4 @@
-let pattern = "its ther";   // <-- change this anytime
+let pattern = "its there";   // <-- change this anytime
 let buffer = "";
 
 document.addEventListener("keydown", (event) => {

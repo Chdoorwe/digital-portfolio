@@ -194,3 +194,10 @@ a{
     opacity: 1;
   }
 }
+
+.document {
+    margin: 0 auto;     /* centers left–right */
+    position: relative;
+    top: 0;             /* reset the forced vertical centering */
+    transform: none;    /* remove the vertical shift */
+}

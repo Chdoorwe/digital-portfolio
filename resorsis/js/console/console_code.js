@@ -286,7 +286,6 @@ addCommand("scan", async () => {
 addCommand("the lost archive council", async () => {
   await typeLine("Available documents:");
 
-  // 🔧 EDIT THIS LIST ANYTIME
   const documents = [
     { name: "doc one", file: "../lore/tlach/tlac_doc1.html", command: "open:doc1" },
     { name: "doc two", file: "../lore/tlach/tlac_doc2.html", command: "open:doc2" },
@@ -297,7 +296,6 @@ addCommand("the lost archive council", async () => {
     { name: "doc seven", file: "../lore/tlach/tlac_doc7.html", command: "open:doc7" }
   ];
 
-
   documents.forEach(doc => {
     const line = document.createElement("div");
     line.className = "line doc-link";
@@ -305,21 +303,19 @@ addCommand("the lost archive council", async () => {
     line.style.cursor = "pointer";
 
     line.addEventListener("click", async () => {
-      // Auto‑type the command
-      await autoRunCommand(doc.command);
+  await new Promise(res => setTimeout(res, 30));
 
-      // Small delay for effect
-      await new Promise(res => setTimeout(res, 300));
+  // Open in a new tab safely
+  window.open(doc.file, "_blank", "noopener");
+});
 
-      // Go to the HTML file
-      window.location.href = doc.file;
-    });
 
     screen.insertBefore(line, screen.querySelector(".prompt-line"));
   });
 
   screen.scrollTop = screen.scrollHeight;
 }, { hidden: true });
+
 
 addCommand("run:/fuc-the.truthDell", async () => {
   crtFlicker();
